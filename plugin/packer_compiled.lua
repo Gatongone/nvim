@@ -94,6 +94,16 @@ _G.packer_plugins = {
     path = "/root/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
     url = "https://github.com/hrsh7th/cmp-vsnip"
   },
+  ["defx-icons"] = {
+    loaded = true,
+    path = "/root/.local/share/nvim/site/pack/packer/start/defx-icons",
+    url = "https://github.com/kristijanhusak/defx-icons"
+  },
+  ["defx.nvim"] = {
+    loaded = true,
+    path = "/root/.local/share/nvim/site/pack/packer/start/defx.nvim",
+    url = "https://github.com/Shougo/defx.nvim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/root/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -129,10 +139,20 @@ _G.packer_plugins = {
     path = "/root/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-yarp"] = {
+    loaded = true,
+    path = "/root/.local/share/nvim/site/pack/packer/start/nvim-yarp",
+    url = "https://github.com/roxma/nvim-yarp"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/root/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
+  },
+  rnvimr = {
+    loaded = true,
+    path = "/root/.local/share/nvim/site/pack/packer/start/rnvimr",
+    url = "https://github.com/kevinhwang91/rnvimr"
   },
   ["vim-airline"] = {
     loaded = true,
@@ -144,10 +164,20 @@ _G.packer_plugins = {
     path = "/root/.local/share/nvim/site/pack/packer/start/vim-airline-themes",
     url = "https://github.com/vim-airline/vim-airline-themes"
   },
+  ["vim-choosewin"] = {
+    loaded = true,
+    path = "/root/.local/share/nvim/site/pack/packer/start/vim-choosewin",
+    url = "https://github.com/t9md/vim-choosewin"
+  },
   ["vim-devicons"] = {
     loaded = true,
     path = "/root/.local/share/nvim/site/pack/packer/start/vim-devicons",
     url = "https://github.com/ryanoasis/vim-devicons"
+  },
+  ["vim-hug-neovim-rpc"] = {
+    loaded = true,
+    path = "/root/.local/share/nvim/site/pack/packer/start/vim-hug-neovim-rpc",
+    url = "https://github.com/roxma/vim-hug-neovim-rpc"
   },
   ["vim-vsnip"] = {
     loaded = true,

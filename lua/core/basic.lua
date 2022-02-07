@@ -24,9 +24,7 @@ vim.o.background = "dark"
 
 -- terminal theme
 vim.cmd([[colorscheme gruvbox]])
-vim.cmd("highlight Normal guibg=NONE ctermbg=None")
-
-
+vim.cmd("hi Normal ctermfg=252 ctermbg=None guibg=None")
 
 -- tab
 vim.o.tabstop = 4

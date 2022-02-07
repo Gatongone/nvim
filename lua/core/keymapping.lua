@@ -1,5 +1,18 @@
 local map = vim.api.nvim_set_keymap
 local opt = {noremap = true, silent = true }
+local nmap = function(before,after)
+    map('n',before,after,opt)
+end
+local imap = function(before,after)
+    map('i',before,after,opt)
+end
+local vmap = function(before,after)
+    map('v',before,after,opt)
+end
+
+-- nop
+map('n','s','<nop>',opt)
+map('n','F','<nop>',opt)
 
 -- leader
 vim.g.mapleader = " "
@@ -21,10 +34,8 @@ map('n','q','I',opt)
 map('n','e','A',opt)
 
 -- quit or save
-map('n','s','<nop>',opt)
 map('n','<C-s>',':w<CR>',opt)
 map('n','<C-q>',':q<CR>',opt)
-vim.cmd("map <C-r> :source $MYVIMRC<CR>")
 
 -- search
 map('n',']','n',opt)
@@ -42,13 +53,10 @@ map("n", "<C-->", ":vertical resize -10<CR>", opt)
 --map("n", "<C-]>", ":resize +10<CR>",opt)
 --map("n", "<C-[>", ":resize -10<CR>",opt)
 
-
-
 -- label
 map("n", "t", ":tabe<CR>",opt)
 map("n", "<A-q>", ":-tabnext<CR>", opt)
 map("n", "<A-e>", ":+tabnext<CR>", opt)
-
 
 -- lsp
 local pluginKeys = {}
@@ -85,6 +93,7 @@ pluginKeys.cmp = function(cmp)
     ['<C-j>'] = cmp.mapping.select_prev_item(),
     -- 下一个
     ['<C-l>'] = cmp.mapping.select_next_item(),
+    ['`'] = cmp.mapping.select_next_item(),
     -- 出现补全
     ['<C-.>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
     -- 取消
@@ -105,4 +114,5 @@ pluginKeys.cmp = function(cmp)
   }
 end
 return pluginKeys
+
 

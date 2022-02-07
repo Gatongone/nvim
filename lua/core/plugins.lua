@@ -10,10 +10,8 @@ end
 vim.cmd [[packadd packer.nvim]]
 
 --config require
-require('lsp/setup')
-require('lsp/nvim-cmp')
-vim.cmd('source ~/.config/nvim/lua/plugins_config/airline.rc.lua')
-
+require('lsp.setup')
+require('lsp.nvim-cmp')
 
 -- Packer startup
 return require('packer').startup({
@@ -38,6 +36,12 @@ return require('packer').startup({
         use 'rafamadriz/friendly-snippets'
         -- lspkind
         use 'onsails/lspkind-nvim'
+        -- defx (files manager;windows choose)
+        use {"Shougo/defx.nvim",requires = {"kristijanhusak/defx-icons","t9md/vim-choosewin"}}
+        use "roxma/vim-hug-neovim-rpc"
+        use "roxma/nvim-yarp"
+        -- ranger
+        use "kevinhwang91/rnvimr"
 
     end,
     config =
@@ -54,6 +58,5 @@ return require('packer').startup({
             end
         }
     }
-
 })
 
