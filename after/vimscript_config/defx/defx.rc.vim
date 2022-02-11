@@ -42,7 +42,7 @@ autocmd FileType defx call s:defx_my_settings()
 	  \ defx#do_action('toggle_sort', 'time')
 	  nnoremap <silent><buffer><expr> dD
 	  \ defx#do_action('remove')
-	  nnoremap <silent><buffer><expr> a
+	  nnoremap <silent><buffer><expr> r
 	  \ defx#do_action('rename')
 	  nnoremap <silent><buffer><expr> !
 	  \ defx#do_action('execute_command')
@@ -72,7 +72,7 @@ autocmd FileType defx call s:defx_my_settings()
 	  \ defx#do_action('toggle_select') . 'j'
 	  nnoremap <silent><buffer><expr> m
 	  \ defx#do_action('toggle_select') . 'j'
-	  nnoremap <silent><buffer><expr> vv
+	  nnoremap <silent><buffer><expr> v
 	  \ defx#do_action('toggle_select_all')
 	  nnoremap <silent><buffer><expr> *
 	  \ defx#do_action('toggle_select_all')
@@ -108,7 +108,7 @@ call defx#custom#column('git', 'indicators', {
 
 " resize
 call defx#custom#option('_', {
-      \ 'winwidth': 30,
+      \ 'winwidth':30,
       \ 'split': 'vertical',
       \ 'direction': 'topleft',
       \ 'show_ignored_files': 0,

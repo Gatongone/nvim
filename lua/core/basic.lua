@@ -7,17 +7,15 @@ vim.o.backup = false
 vim.o.writebackup = false
 vim.o.swapfile = false
 
--- mouse enable
---vim.o.mouse = "a"
+
 
 -- line style
 vim.wo.number = true
 vim.wo.relativenumber = false
 vim.wo.cursorline = true
-vim.wo.signcolumn = "yes"
+--vim.wo.signcolumn = "yes"
 
 -- vim.wo.colorcolumn = "80"
---vim.o.background = "dark"
 vim.o.termguicolors = true
 vim.opt.termguicolors = true
 vim.o.background = "dark"
@@ -25,6 +23,7 @@ vim.o.background = "dark"
 -- terminal theme
 vim.cmd([[colorscheme gruvbox]])
 vim.cmd("hi Normal ctermfg=252 ctermbg=None guibg=None")
+
 
 -- tab
 vim.o.tabstop = 4

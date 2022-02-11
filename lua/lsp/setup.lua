@@ -22,10 +22,10 @@ lsp_installer.on_server_ready(function(server)
   local opts = servers[server.name]
   if opts then
     opts.on_attach = function(_, bufnr)
-      local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-      -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+      --local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...)  end
+      --local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
       -- 绑定快捷键
-      require('core/keymapping').maplsp(buf_set_keymap)
+      --require('core/keymapping').maplsp(buf_set_keymap)
     end
     opts.flags = {
       debounce_text_changes = 150,
