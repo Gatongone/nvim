@@ -89,6 +89,8 @@ source ~/.zshrc
     * Windows：C:\Windows\Fonts
     * Linux：/usr/share/fonts/truetype/
 
+以上软件确认安装后，进入 nvim ( shell上直接输入 nvim )，在normal模式下输入 `:PackerSync`
+
 ## 配置文件目录预览
 
 ```
