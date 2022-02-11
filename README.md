@@ -32,6 +32,13 @@
 
 ## 使用此配置注意事项：
 
+此配置的安装方法：
+```
+git clone https://github.com/Gatongone/nvim 
+~/.config
+```
+在安装此配置之前，你需要确认以下安装：
+
 * 确保你安装了 neovim，安装方法：
 ```
 sudo add-apt-repository ppa:neovim-ppa/stable
