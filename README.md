@@ -34,38 +34,38 @@
 
 * 确保你安装了 neovim，安装方法：
 ```
-    sudo add-apt-repository ppa:neovim-ppa/stable
-    sudo apt-get update
-    sudo apt-get install neovim
+sudo add-apt-repository ppa:neovim-ppa/stable
+sudo apt-get update
+sudo apt-get install neovim
 ```
 
 * 确保你安装了 packer.vim，安装方法：
 ```
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-     ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\ 
+~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
 
 * 确保你安装了python3，安装方法：
 ```
-    sudo apt-get install python3
-    sudo ln -s /usr/bin/python3.6 /usr/bin/python
+sudo apt-get install python3
+sudo ln -s /usr/bin/python3.6 /usr/bin/python
 ```
 
 * 确保你安装了 pynvim，安装方法：
 ```
-    python3 -m pip install pynvim
+python3 -m pip install pynvim
 ```
 * 确保你安装了 nodejs，安装方法：
 ```
-    sudo apt-get nodejs
+sudo apt-get nodejs
 ```
 * 确保你安装了 tree-sitter-cli，安装方法：
 ```
-    npm install -g tree-sitter-cli
+npm install -g tree-sitter-cli
 ```
 * 确保你安装了ranger，安装方法：
 ```shell
-    sudo apt-get install ranger
+sudo apt-get install ranger
 ```
 * 确保你安装了 FZF，安装方法：
 ```
