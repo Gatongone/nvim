@@ -1,3 +1,13 @@
+
+<!-- vim-markdown-toc GFM -->
+
+* [包含插件](#包含插件)
+* [使用此配置注意事项：](#使用此配置注意事项)
+* [配置文件目录预览](#配置文件目录预览)
+* [键位映射](#键位映射)
+
+<!-- vim-markdown-toc -->
+
 ## 包含插件
 * [packer.nvim](https://github.com/wbthomason/packer.nvim)
 * [airline](https://github.com/vim-airline/vim-airline)
