@@ -155,6 +155,7 @@ source ~/.zshrc
 | `normal` | 为单词增加包裹代码         | `ysiw`                     |
 | `normal` | 为整行增加包裹代码         | `yss`                      |
 | `normal` | 删除包裹代码               | `ds`                       |
+| `normal` | 开启 markdown-table模式    | `Space` + `tm`             |
 | `normal` | 转到定义                   | `gd`                       |
 | `normal` | 代码指令                   | `gd`                       |
 | `normal` | 查看成员                   | `gm`                       |
@@ -185,5 +186,4 @@ source ~/.zshrc
 | `visual` | 选择一行                   | `L`                        |
 | `visual` | 将选择内容向上移动一行     | `Alt`+`i`                  |
 | `visual` | 将选择内容向下移动一行     | `Alt`+`k`                  |
-| `visual` | 开启 markdown-table模式    | `Space` + 't' + 'm'        |
 | `visual` | 为选择部分添加包裹代码     | `S`                        |
