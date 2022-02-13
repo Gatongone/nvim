@@ -124,7 +124,7 @@ source ~/.zshrc
 | `normal` | 退出当前文件               | `Ctrl`+`q`                 |
 | `normal` | insert模式                 | `Esc`                      |
 | `normal` | virtual-block模式          | `b`                        |
-| `normal` | 录制宏                     | `q`                        |
+| `normal` | 录制/停止宏                | `R`                        |
 | `normal` | 播放宏                     | `h`                        |
 | `normal` | 移动到行首并插入           | `q`                        |
 | `normal` | 移动到行尾并插入           | `e`                        |
