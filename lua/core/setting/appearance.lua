@@ -19,3 +19,5 @@ if appearance.theme == "none" then
 else
     vim.cmd("colorscheme " .. appearance.theme)
 end
+
+vim.opt.fillchars:append { eob = " " }

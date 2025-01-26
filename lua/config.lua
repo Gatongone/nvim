@@ -94,7 +94,7 @@ nvim.setting =
 {
     editor =
     {
-        tree                                         = "netrw",           -- File tree implemention, 'netrw' for default, If you want other implementation, please append the keymap to 'nvim/lua/core/keymap/{you_impl}.lua'.
+        tree                                         = "yazi",           -- File tree implemention, 'netrw' for default, If you want other implementation, please append the keymap to 'nvim/lua/core/keymap/{you_impl}.lua'.
     },
     file =
     {

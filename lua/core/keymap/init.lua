@@ -27,5 +27,5 @@ require("core.keymap.editor")
 require("core.keymap.tab")
 
 for index, impl in pairs(nvim.setting.editor) do
-    require("core.keymap."..impl)
+    pcall(require, "core.keymap."..impl)
 end
