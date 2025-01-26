@@ -104,9 +104,10 @@ nvim.setting =
     },
     appearance =
     {
+        fill_char                                    = ' ',               -- Characters to fill the statuslines, vertical separators and special lines in the window.        
         show_line_number                             = true,              -- Enable line number.
         relative_line_number                         = false,             -- Enable relative line number (This option will only take effect when 'show_line_number' is true).
-        highlight_line                               = true,              -- Enable the highlight for the line where cursor located.
+        highlight_line                               = false,             -- Enable the highlight for the line where cursor located.
         theme                                        = "none",            -- Neovim theme, 'none' for default, theme files will be collected to 'nvim/lua/core/theme'.
     },
 }
