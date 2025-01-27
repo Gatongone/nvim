@@ -1,0 +1,91 @@
+return
+{
+  kind =
+  {
+    codeium       = "",
+    class         = "󰠱",
+    color         = "󰏘",
+    constant      = "󰏿",
+    constructor   = "",
+    enum          = "",
+    enumMember    = "",
+    event         = "",
+    field         = "",
+    file          = "󰈙",
+    folder        = "󰉋",
+    method        = "󰊕",
+    interface     = "",
+    keyword       = "󰌋",
+    method        = "",
+    module        = "󰆧",
+    operator      = "󰆕",
+    property      = "󰜢",
+    reference     = "",
+    snippet       = "",
+    text          = "",
+    generic       = "󰗴",
+    unit          = "",
+    value         = "󰎠",
+
+    array         = "",
+    boolean       = "",
+    collapsed     = "",
+    control       = "",
+    key           = "󰌋",
+    namespace     = "󰦮",
+    null          = "",
+    number        = "󰎠",
+    object        = "",
+    package       = "",
+    string        = "",
+    struct        = "󰆼",
+    variable      = "󰀫",
+  },
+  git =
+  {
+    added         = " ",
+    modified      = " ",
+    removed       = " ",
+    head          = " ",
+    branch        = " ",
+  },
+  ui =
+  {
+    search        = "",
+    selected      = "❯",
+    pointer       = "➜",
+    bug           = "",
+    circle        = "",
+    squre         = "",
+    ellipsis      = "",
+    plus          = "",
+    robot         = "󰚩",
+    lsp           = "",
+    fold          = "",
+  },
+  task =
+  {
+    canceled      = "",
+    failure       = "",
+    success       = "",
+    running       = "",
+  },
+  diagnostics =
+  {
+    error         = "",
+    warning       = "",
+    info          = "",
+    hint          = "",
+    view          = "󰮔",
+  },
+  debug =
+  {
+    breakpoint    = "",
+    restart       = "",
+    stop          = "",
+    continue      = "",
+    stepinto      = "󰆹",
+    stepout       = "󰆸",
+  },
+  spinner = { '⣶', '⣧', '⣏', '⡟', '⠿', '⢻', '⣹', '⣼' }
+}
