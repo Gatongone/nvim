@@ -186,7 +186,7 @@ local setup_scheme = function(theme, config)
         ["@tag"]                      = { fg = c.clean_green },
         ["@tag.delimiter"]            = { fg = c.comment },
         ["@tag.attribute"]            = { fg = c.soft_yellow },
-        --
+
         -- per language TreeSitter
         ["@variable.python"]                = { fg = c.foreground, style = "NONE" },
         ["@attribute.python"]               = { fg = c.orange, style = "bold" },
