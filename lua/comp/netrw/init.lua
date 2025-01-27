@@ -3,7 +3,7 @@ if nvim.setting.editor.tree ~= 'netrw' then
 end
 
 -- Netrw extension
-netrw =
+local netrw =
 {
     -- Copied path
     copied = { },

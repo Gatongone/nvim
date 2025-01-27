@@ -11,12 +11,19 @@ if appearance.theme == "none" then
         highlight Cursor ctermbg=7
     ]]
 else
-    vim.cmd("colorscheme " .. appearance.theme)
+    require("theme").setup(appearance.theme)
 end
 
-vim.opt.fillchars:append { eob = " " }
+if appearance.transparent_background == true then
+    local transparent = require('comp.transparent')
+    transparent.setup()
+    transparent.toggle(true)
+end
 
 -- Line
 vim.wo.number           = appearance.show_line_number
 vim.wo.relativenumber   = appearance.relative_line_number
 vim.wo.cursorline       = appearance.highlight_line
+
+-- Fill characters
+vim.opt.fillchars:append { eob = " " }
