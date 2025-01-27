@@ -2,17 +2,6 @@
 local M    = {}
 local util = require("theme.util")
 
-local function opt(key, default)
-    key = "gruvbox_baby_" .. key
-    if vim.g[key] == nil then
-        return default
-    end
-    if vim.g[key] == 0 then
-        return false
-    end
-    return vim.g[key]
-end
-
 local default_config = 
 {
   background_color     = "medium",
