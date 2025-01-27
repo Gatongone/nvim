@@ -1,7 +1,3 @@
-if nvim.setting.editor.tree ~= 'netrw' then
-    return
-end
-
 -- Netrw extension
 local netrw =
 {
