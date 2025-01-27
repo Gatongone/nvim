@@ -1,3 +1,18 @@
+local default_win_opts =
+{
+    title     = 'OKOK',
+    title_pos = 'center',
+    relative  = 'cursor',
+    width     = 100,
+    height    = 25,
+    focusable = true,
+    bufpos    = nil,
+    border    = 'rounded',
+    style     = 'minimal',
+    zindex    = 999,
+    noautocmd = false,
+}
+
 -- Extensions for neovim
 nvim.ext =
 {
@@ -94,5 +109,39 @@ nvim.ext =
         get_cur_win =  function()
             return vim.fn.winnr()
         end,
+
+        -- Create a float window
+        --@param enter: Whether focus on the window after it created
+        --@param opt: See https://neovim.io/doc/user/api.html#nvim_open_win()
+        --@return table with window info: {bufnr: number, winnr: number, title: window title}
+        create_win = function(enter, opts)
+            local win         = {}
+            local use_default = opts == nil
+            local focus       = focus or true
+            local appearance  = nvim.setting.appearance
+            local opts        = opts or default_win_opts
+
+            if use_default then
+                local ui = vim.api.nvim_list_uis()[1]
+                opts.row = math.floor((ui.height - opts.height) / 2 + 0.5)
+                opts.col = math.floor((ui.width - opts.width) / 2 + 0.5)
+            end
+
+            opts = vim.tbl_extend("force", default_win_opts, opts)
+
+            if type(opts.title) == 'string' and opts.title ~= ''  then
+                local theme = appearance.theme
+                if theme ~= nil and theme ~= "none" and theme ~= "" then
+                    local scheme = require("theme.scheme."..theme)
+                    vim.api.nvim_set_hl(0,'WindowTitle', {fg = scheme.color.soft_green, cterm = 'bold'})
+                    opts.title = {{" "..opts.title.." ", "WindowTitle"}}
+                end
+            end
+
+            win.title = opts.title
+            win.bufnr = vim.api.nvim_create_buf(false, false)
+            win.winnr = vim.api.nvim_open_win(win.bufnr, enter, opts)
+            return win
+        end
     }
 }

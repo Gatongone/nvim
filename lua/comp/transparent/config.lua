@@ -8,7 +8,7 @@ local config = {
     'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
     'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
     'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
-    'EndOfBuffer',
+    'EndOfBuffer', 'NormalFloat', 'NvimTreeNormal', 'FloatBorder',
   },
   extra_groups = {},
   exclude_groups = {},
