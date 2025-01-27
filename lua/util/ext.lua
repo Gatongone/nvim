@@ -1,8 +1,9 @@
 local default_win_opts =
 {
-    title     = 'OKOK',
+    anchor    = 'NW',
+    title     = '',
     title_pos = 'center',
-    relative  = 'cursor',
+    relative  = 'win',
     width     = 100,
     height    = 25,
     focusable = true,
@@ -114,18 +115,19 @@ nvim.ext =
         --@param enter: Whether focus on the window after it created
         --@param opt: See https://neovim.io/doc/user/api.html#nvim_open_win()
         --@return table with window info: {bufnr: number, winnr: number, title: window title}
-        create_win = function(enter, opts)
+        create_win = function(opts, enter)
             local win         = {}
             local use_default = opts == nil
-            local focus       = focus or true
+            local focus       = enter == nil or enter == true
             local appearance  = nvim.setting.appearance
-            local opts        = opts or default_win_opts
+            local opts        = opts or {}
 
-            if use_default then
-                local ui = vim.api.nvim_list_uis()[1]
-                opts.row = math.floor((ui.height - opts.height) / 2 + 0.5)
-                opts.col = math.floor((ui.width - opts.width) / 2 + 0.5)
-            end
+            local ui = vim.api.nvim_list_uis()[1]
+            opts.width = opts.width or math.min(ui.width - 20, math.floor(ui.width / 1.5 + 0.5))
+            opts.height = opts.height or math.min(ui.height - 10, math.floor(ui.height / 1.3 + 0.5))
+            opts.row = opts.row or math.floor((ui.height - opts.height) / 2 + 0.5)
+            opts.col = opts.col or math.floor((ui.width - opts.width) / 2 + 0.5)
+            print(ui.width, ui.height)
 
             opts = vim.tbl_extend("force", default_win_opts, opts)
 
@@ -133,14 +135,14 @@ nvim.ext =
                 local theme = appearance.theme
                 if theme ~= nil and theme ~= "none" and theme ~= "" then
                     local scheme = require("theme.scheme."..theme)
-                    vim.api.nvim_set_hl(0,'WindowTitle', {fg = scheme.color.soft_green, cterm = 'bold'})
+                    vim.api.nvim_set_hl(0,'WindowTitle', {fg = scheme.color.soft_green, bold = true})
                     opts.title = {{" "..opts.title.." ", "WindowTitle"}}
                 end
             end
 
             win.title = opts.title
             win.bufnr = vim.api.nvim_create_buf(false, false)
-            win.winnr = vim.api.nvim_open_win(win.bufnr, enter, opts)
+            win.winnr = vim.api.nvim_open_win(win.bufnr, focus, opts)
             return win
         end
     }
