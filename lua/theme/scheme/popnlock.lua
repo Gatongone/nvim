@@ -1,4 +1,5 @@
 local M = {}
+
 M.color = 
 {
     dark             = "#0d0e0f",
@@ -7,10 +8,10 @@ M.color =
     background_dark  = "#141421",
     background_light = "#141421",
     medium_gray      = "#928374",
-    comment          = "#928374",
+    comment          = "#97896f",
     gray             = "#DEDEDE",
     soft_yellow      = "#eebd35",
-    soft_green       = "#98971a",
+    soft_green       = "#b8bb26",
     bright_yellow    = "#fabd2f",
     orange           = "#d65d0e",
     red              = "#fb4934",
@@ -25,6 +26,7 @@ M.color =
     milk             = "#e7d7ad",
     none             = "NONE",
 }
+
 M.term =
 {
   "#282828", "#cc241d", "#98971a", "#d79921", "#458588", "#b16286", "#689d6a", "#ebdbb2",
