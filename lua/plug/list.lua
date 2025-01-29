@@ -3,7 +3,8 @@ local list =
     {
         "nvim-lualine/lualine.nvim",
         config = function()
-            require("lualine").setup({})
+            vim.opt.showmode = false
+            require("lualine").setup(require("plug.lualine"))
         end
     },
     {
