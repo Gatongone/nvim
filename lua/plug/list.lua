@@ -33,7 +33,4 @@ local list =
         }
     },
 }
-if nvim.setting.editor.tree == 'yazi' then
-    table.insert(list, { "mikavilpas/yazi.nvim" })
-end
 return list
