@@ -52,6 +52,9 @@ vmap(editor.intent_right,               '>gv')
 vmap(editor.virtual_move_up,            ":move '<-2<CR>gv-gv")
 vmap(editor.virtual_move_down,          ":move '>+1<CR>gv-gv")
 
+-- Goto
+nmap(editor.goback,                     "<C-o>")
+
 -- Delete
 nmap(editor.delete,                     'd')
 

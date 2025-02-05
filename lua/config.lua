@@ -3,7 +3,7 @@ nvim.keymap =
 {
     editor =
     {
-        leader                   = ' ',     -- Key for <Leader>
+        leader                   = ' ',     -- Key for <Leader>.
 
         intent_left              = '<A-j>', -- Append a tab intent to the line begining in virtual mode and normal mode.
         intent_right             = '<A-l>', -- Remove a tab intent to the line begining in virtual mode and normal mode.
@@ -53,8 +53,9 @@ nvim.keymap =
         cut                      = 'x',     -- cut text.
         paste                    = 'p',     -- Paste text to the right of cursor.
         record                   = 'R',     -- Recording.
-        play                     = 'P'      -- Play records.
-
+        play                     = 'P',     -- Play records.
+        goback                   = 'gb',    -- Go back to previous edited position.
+        goto                     = 'gt',    -- Go to every where.
     },
     tab =
     {
@@ -84,27 +85,27 @@ nvim.keymap =
     },
     lsp =
     {
-        format_code         = '<C-f>', -- Apply formatting
-        rename_buf          = '<C-r>', -- Rename buffer variable
-        open_hover_doc      = '<C-d>', -- Open hover document
-        open_error_diag     = '<C-e>', -- Open buffer error diagnostic
-        open_method_search  = '<C-m>', -- Open method search
-        open_code_action    = '<C-a>', -- Open code action
+        format_code         = '<C-f>', -- Apply formatting.
+        rename_buf          = '<C-r>', -- Rename buffer variable.
+        open_hover_doc      = '<C-d>', -- Open hover document.
+        open_error_diag     = '<C-e>', -- Open buffer error diagnostic.
+        open_method_search  = '<C-m>', -- Open method search.
+        open_code_action    = '<C-a>', -- Open code action.
 
-        goto_definition     = 'gd',    -- Go to definition
-        goto_implementation = 'gi',    -- Go to implementation
-        goto_declaration    = 'gD',    -- Go to declaration
-        goto_ref            = 'gr',    -- Go to references
-        goto_prev_diag      = 'gj',    -- Go to previous diagnostic item
-        goto_next_diag      = 'gl',    -- Go to next diagnostic item
+        goto_definition     = 'gd',    -- Go to definition.
+        goto_implementation = 'gi',    -- Go to implementation.
+        goto_declaration    = 'gD',    -- Go to declaration.
+        goto_ref            = 'gr',    -- Go to references.
+        goto_prev_diag      = 'gj',    -- Go to previous diagnostic item.
+        goto_next_diag      = 'gl',    -- Go to next diagnostic item.
 
-        cmp_prev            = '<A-i>', -- Go to previous cmp item
-        cmp_next            = '<A-k>', -- Go to previous cmp item
-        cmp_abort           = '<A-j>', -- Abort cmp
-        cmp_complete        = '<A-l>', -- Complete cmp suggestion
-        cmp_confirm         = '<Tab>', -- Confirm cmp item
-        cmp_doc_scroll_up   = '<C-i>', -- Cmp document scroll up
-        cmp_doc_scroll_down = '<C-k>', -- Cmp document scroll down
+        cmp_prev            = '<A-i>', -- Go to previous cmp item.
+        cmp_next            = '<A-k>', -- Go to previous cmp item.
+        cmp_abort           = '<A-j>', -- Abort cmp.
+        cmp_complete        = '<A-l>', -- Complete cmp suggestion.
+        cmp_confirm         = '<Tab>', -- Confirm cmp item.
+        cmp_doc_scroll_up   = '<C-i>', -- Cmp document scroll up.
+        cmp_doc_scroll_down = '<C-k>', -- Cmp document scroll down.
     }
 }
 
