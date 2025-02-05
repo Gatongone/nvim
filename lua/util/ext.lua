@@ -13,12 +13,8 @@ local default_win_opts =
     zindex    = 999,
     noautocmd = false,
 }
+
 local appearance = nvim.setting.appearance
-local theme = appearance.theme
-if theme ~= nil and theme ~= "none" and theme ~= "" then
-    local scheme = require("theme.scheme."..theme)
-    vim.api.nvim_set_hl(0,'WindowTitle', {fg = scheme.color.soft_green, bold = true})
-end
 
 --- Extensions for neovim
 nvim.ext =
@@ -151,7 +147,7 @@ nvim.ext =
             opts.col = opts.col or math.floor((ui.width - opts.width) / 2)
             opts = vim.tbl_extend("force", default_win_opts, opts)
             if type(opts.title) == 'string' and opts.title ~= ''  then
-                opts.title = {{" "..opts.title.." ", "WindowTitle"}}
+                opts.title = " "..opts.title.." "
             end
             return opts
         end
