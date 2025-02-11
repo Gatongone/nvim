@@ -2,10 +2,10 @@ local tree = nvim.setting.editor.tree
 local map  = vim.api.nvim_set_keymap
 local opt  = {noremap = true, silent = true }
 bnmap = function(before, after)
-    vim.cmd("nmap <silent><buffer> ".. before .. " " .. after)
+    vim.cmd("nnoremap <silent><buffer> ".. before .. " " .. after)
 end
 bvmap = function(before, after)
-    vim.cmd("vmap <silent><buffer> ".. before .. " " .. after)
+    vim.cmd("vnoremap <silent><buffer> ".. before .. " " .. after)
 end
 nmap = function(before, after)
     map('n',before,after,opt)
@@ -25,3 +25,4 @@ end
 
 require("core.keymap.editor")
 require("core.keymap.tab")
+require("core.keymap.win")

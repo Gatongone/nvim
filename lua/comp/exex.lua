@@ -60,7 +60,7 @@ end
 -- Open explore as window
 local function open_ex()
     -- Create window
-    local win_info = win.create_win({title = "Explore"})
+    local win_info = win.create_win(true, {title = "Explore"})
     local keymap_config = nil
 
     ex.winnr    = win_info.winnr
@@ -76,9 +76,6 @@ local function open_ex()
     vim.fn.termopen(M.get_cmd(ex.tempname), { on_exit = function() on_ex_exit(keymap_config) end })
     vim.cmd("startinsert")
 end
-vim.api.nvim_create_user_command("Print",  function()
-    print(M.use_vim_map)
-    print(vim.split(M.custom_keymaps, "\n"))
-end, { })
+
 M.open_explore = open_ex
 return M

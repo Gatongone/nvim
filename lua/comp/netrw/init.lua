@@ -5,7 +5,8 @@ local ignore_bufs =
     "noice",
     "notify",
     "smear-cursor",
-    "netrw"
+    "netrw",
+    "terminal",
 }
 
 --- Netrw extension
@@ -377,10 +378,15 @@ local netrw_on_enter = function()
     for _, winnr in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
         local bufnr = vim.api.nvim_win_get_buf(winnr)
         local filetype = vim.fn.getbufvar(bufnr, '&filetype')
+        if filetype == "" or filetype == nil then
+            goto continue
+        end
         if not vim.tbl_contains(ignore_bufs, filetype) then
             return
         end
+        ::continue::
     end
+
     ::exit::
     vim.cmd("q!")
 end

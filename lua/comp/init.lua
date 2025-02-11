@@ -10,3 +10,5 @@ end
 if not succeed or tree == 'netrw' then
     require("comp.netrw")
 end
+
+require("comp.terminal")
