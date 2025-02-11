@@ -10,7 +10,7 @@ local default_win_opts =
     bufpos    = nil,
     border    = 'rounded',
     style     = 'minimal',
-    zindex    = 999,
+    zindex    = 1,
     noautocmd = false,
 }
 
@@ -19,6 +19,34 @@ local appearance = nvim.setting.appearance
 --- Extensions for neovim
 nvim.ext =
 {
+    --- UI APIS
+    ui =
+    {
+        --- Get screen row
+        --- @param ratio number The ratio of screen height
+        --- @return number row 
+        get_screen_row = function(ratio)
+            local ui = vim.api.nvim_list_uis()[1]
+
+            if ratio ~= nil and ratio < 1 then
+                return ui.height * ratio
+            end
+            return ui.height
+        end,
+
+        --- Get screen col
+        --- @param ratio number The ratio of screen width
+        --- @return number col
+        get_screen_col = function(ratio)
+            local ui = vim.api.nvim_list_uis()[1]
+
+            if ratio ~= nil and ratio < 1 then
+                return ui.width * ratio
+            end
+            return ui.width
+        end
+    },
+
     --- Buffer APIs
     buf =
     {
@@ -52,6 +80,7 @@ nvim.ext =
             return vim.api.nvim_list_bufs()
         end
     },
+
     --- Tab APIs
     tab =
     {
@@ -93,6 +122,7 @@ nvim.ext =
             return vim.api.nvim_buf_get_name(0)
         end,
     },
+
     --- Window APIs
     win =
     {
@@ -117,9 +147,9 @@ nvim.ext =
 
         --- Create a float window
         --- @param enter boolean Whether focus on the window after it created
-        --- @param opts table See https://neovim.io/doc/user/api.html#nvim_open_win()
+        --- @param opts table|nil See https://neovim.io/doc/user/api.html#nvim_open_win()
         --- @return table winconfig with window info: {bufnr: number, winnr: number, title: window title}
-        create_win = function(opts, enter)
+        create_win = function(enter, opts)
             local win         = {}
             local focus       = enter == nil or enter == true
             local useropts = nvim.ext.win.get_win_config(opts)
@@ -130,7 +160,7 @@ nvim.ext =
         end,
 
         --- Get window properties that expand with default config
-        --- @param opts table See https://neovim.io/doc/user/api.html#nvim_open_win()
+        --- @param opts table|nil See https://neovim.io/doc/user/api.html#nvim_open_win()
         --- @return table opts Options that expand with default config
         get_win_config = function(opts)
             opts = opts or {}
