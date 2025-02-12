@@ -102,7 +102,6 @@ nvim.keymap =
         rename_buf               = '<C-r>',       -- Rename buffer variable.
         open_hover_doc           = '<C-d>',       -- Open hover document.
         open_error_diag          = '<C-e>',       -- Open buffer error diagnostic.
-        open_method_search       = '<C-m>',       -- Open method search.
         open_code_action         = '<C-a>',       -- Open code action.
 
         goto_definition          = 'gd',          -- Go to definition.
