@@ -1,5 +1,5 @@
 local tree = nvim.setting.editor.tree
-local map  = vim.api.nvim_set_keymap
+local map  = vim.keymap.set
 local opt  = {noremap = true, silent = true }
 bnmap = function(before, after)
     vim.cmd("nnoremap <silent><buffer> ".. before .. " " .. after)
