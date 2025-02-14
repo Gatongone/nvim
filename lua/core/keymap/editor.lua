@@ -53,6 +53,7 @@ vmap(editor.virtual_move_up,            ":move '<-2<CR>gv-gv")
 vmap(editor.virtual_move_down,          ":move '>+1<CR>gv-gv")
 
 -- Goto
+nmap(editor.goto,                       ":JumpWord<CR>")
 nmap(editor.goback,                     "<C-o>")
 
 -- Delete

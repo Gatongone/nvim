@@ -104,6 +104,8 @@ local setup_scheme   = function(theme_name, config)
         WarningMsg                          = { fg = c.soft_yellow },
         WildMenu                            = { fg = c.background, bg = c.blue_gray },
         EndOfBuffer                         = { fg = c.background },
+        JumpWordLabel                       = { fg = c.soft_green,   style = "bold" },
+        JumpWordMatch                       = { fg = c.orange },
 
         -- Noice
         NoiceCmdlineIcon                    = { fg = c.forest_green },
