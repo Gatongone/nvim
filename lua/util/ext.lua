@@ -183,3 +183,27 @@ nvim.ext =
         end
     }
 }
+
+--- Check if element contains in table
+--- @param self table
+--- @param element any
+--- @return boolean contains
+table.contains = function(self, element)
+    for _, value in pairs(self) do
+        if element == value then
+            return true
+        end
+    end
+    return false
+end
+
+--- Convert string to array
+--- @param self string
+--- @return table array
+string.toarray = function(self)
+    local result = {}
+    for i = 1, #self do
+        result[i] = string.sub(self, i, i)
+    end
+    return result
+end
