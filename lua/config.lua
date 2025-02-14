@@ -1,4 +1,4 @@
--- Keymap
+--- Keymap
 nvim.keymap =
 {
     editor =
@@ -52,6 +52,7 @@ nvim.keymap =
         play                     = 'H',           -- Play records.
         goback                   = 'gb',          -- Go back to previous edited position.
         goto                     = 'gt',          -- Go to every where.
+        comment                  = '<C-_>',       -- Commenting lines.
     },
     tab =
     {
@@ -121,7 +122,7 @@ nvim.keymap =
     }
 }
 
--- Settings
+--- Settings
 nvim.setting =
 {
     editor =
