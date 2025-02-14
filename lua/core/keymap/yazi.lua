@@ -26,7 +26,7 @@ prepend_keymap = [
     { on = %s,                 run = "plugin smart-enter",            desc = "Enter the child directory, or open the file" },
 ]
 keymap = [
-    { on = %s,                 run = "enter",                         desc = "Enter the child directory" }
+    { on = %s,                 run = "enter",                         desc = "Enter the child directory" },
     { on = %s,                 run = "escape",                        desc = "Exit visual mode, clear selected, or cancel search" },
     { on = %s,                 run = "quit",                          desc = "Quit the process" },
     { on = %s,                 run = "arrow -1",                      desc = "Move cursor up" },
@@ -35,10 +35,11 @@ keymap = [
     { on = %s,                 run = "yank",                          desc = "Yank selected files (copy)" },
     { on = %s,                 run = "yank --cut",                    desc = "Yank selected files (cut)" },
     { on = %s,                 run = "paste",                         desc = "Paste yanked files" },
-    { on = %s,                 run = "create",                        desc = "Create a file (ends with / for directories)" }
+    { on = %s,                 run = "create",                        desc = "Create a file (ends with / for directories)" },
     { on = %s,                 run = "rename --cursor=before_ext",    desc = "Rename selected file(s)" },
     { on = %s,                 run = "remove --permanently",          desc = "Permanently delete selected files" },
     { on = %s,                 run = [ "toggle" ],                    desc = "Toggle the current selection state" },
+    { on = "o",                run = "open",                          desc = "Open file" },
     { on = [ "g", "g" ],       run = "arrow -99999999",               desc = "Move cursor to the top" },
     { on = "G",                run = "arrow 99999999",                desc = "Move cursor to the bottom" },
     { on = [ "c", "c" ],       run = "copy path",                     desc = "Copy the file path" },
