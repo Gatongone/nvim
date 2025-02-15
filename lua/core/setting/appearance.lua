@@ -11,7 +11,7 @@ if appearance.theme == "none" then
         highlight Cursor ctermbg=7
     ]]
 else
-    require("theme").setup(appearance.theme, {transparent_mode = appearance.transparent_background})
+    require("theme").setup(appearance.theme)
 end
 
 if appearance.transparent_background == true then
@@ -21,8 +21,8 @@ if appearance.transparent_background == true then
 end
 
 -- Line
-vim.wo.number           = appearance.show_line_number
-vim.wo.relativenumber   = appearance.relative_line_number
+vim.wo.number          = appearance.show_line_number
+vim.wo.relativenumber  = appearance.relative_line_number
 vim.wo.cursorline      = appearance.highlight_line
 
 -- Fill characters
