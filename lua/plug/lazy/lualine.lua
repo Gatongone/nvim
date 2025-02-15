@@ -1,7 +1,6 @@
 local succeed, scheme = pcall(require, "theme.scheme." .. nvim.setting.appearance.theme)
 local icon            = require("theme.icon")
 local filetype        = { "filetype", icon_only = true }
-local colors          = scheme.color
 local theme           = "auto"
 
 _G.get_line_ending    = function()
@@ -20,45 +19,45 @@ if succeed then
     {
         normal =
         {
-            a = { bg = "None", fg = colors.foreground, gui = "bold" },
-            b = { bg = "None", fg = colors.foreground },
-            c = { bg = "None", fg = colors.foreground },
+            a = { bg = "None", fg = scheme.base05, gui = "bold" },
+            b = { bg = "None", fg = scheme.base05 },
+            c = { bg = "None", fg = scheme.base05 },
         },
         insert =
         {
-            a = { bg = "None", fg = colors.light_blue, gui = "bold" },
-            b = { bg = "None", fg = colors.foreground },
-            c = { bg = "None", fg = colors.foreground },
+            a = { bg = "None", fg = scheme.base08, gui = "bold" },
+            b = { bg = "None", fg = scheme.base05 },
+            c = { bg = "None", fg = scheme.base05 },
         },
         visual =
         {
-            a = { bg = "None", fg = colors.soft_yellow, gui = "bold" },
-            b = { bg = "None", fg = colors.foreground },
-            c = { bg = "None", fg = colors.foreground },
+            a = { bg = "None", fg = scheme.base0A, gui = "bold" },
+            b = { bg = "None", fg = scheme.base05 },
+            c = { bg = "None", fg = scheme.base05 },
         },
         replace =
         {
-            a = { bg = "None", fg = colors.pink, gui = "bold" },
-            b = { bg = "None", fg = colors.foreground },
-            c = { bg = "None", fg = colors.foreground },
+            a = { bg = "None", fg = scheme.base0F, gui = "bold" },
+            b = { bg = "None", fg = scheme.base05 },
+            c = { bg = "None", fg = scheme.base05 },
         },
         command =
         {
-            a = { bg = "None", fg = colors.soft_green, gui = "bold" },
-            b = { bg = "None", fg = colors.foreground },
-            c = { bg = "None", fg = colors.foreground },
+            a = { bg = "None", fg = scheme.base0B, gui = "bold" },
+            b = { bg = "None", fg = scheme.base05 },
+            c = { bg = "None", fg = scheme.base05 },
         },
         inactive =
         {
-            a = { bg = "None", fg = colors.red, gui = "bold" },
-            b = { bg = "None", fg = colors.foreground },
-            c = { bg = "None", fg = colors.foreground },
+            a = { bg = "None", fg = scheme.base0E, gui = "bold" },
+            b = { bg = "None", fg = scheme.base05 },
+            c = { bg = "None", fg = scheme.base05 },
         },
         terminal =
         {
-            a = { bg = "None", fg = colors.orange, gui = "bold" },
-            b = { bg = "None", fg = colors.foreground },
-            c = { bg = "None", fg = colors.foreground },
+            a = { bg = "None", fg = scheme.base0D, gui = "bold" },
+            b = { bg = "None", fg = scheme.base05 },
+            c = { bg = "None", fg = scheme.base05 },
         },
     }
 end
@@ -80,10 +79,10 @@ local diagnostics =
     },
     diagnostics_color =
     {
-        error = { bg = "None", fg = colors.red, gui = "bold" },
-        warn  = { bg = "None", fg = colors.soft_yellow, gui = "bold" },
-        hint  = { bg = "None", fg = colors.soft_green, gui = "bold" },
-        info  = { bg = "None", fg = colors.light_blue, gui = "bold" },
+        error = { bg = "None", fg = scheme.base0E, gui = "bold" },
+        warn  = { bg = "None", fg = scheme.base0A, gui = "bold" },
+        hint  = { bg = "None", fg = scheme.base0D, gui = "bold" },
+        info  = { bg = "None", fg = scheme.base08, gui = "bold" },
     },
 }
 
@@ -106,9 +105,9 @@ local diff =
     end,
     diff_color     =
     {
-        added    = { bg = "None", fg = colors.red, gui = "bold" },
-        modified = { bg = "None", fg = colors.soft_yellow, gui = "bold" },
-        removed  = { bg = "None", fg = colors.soft_green, gui = "bold" },
+        added    = { bg = "None", fg = scheme.base0E, gui = "bold" },
+        modified = { bg = "None", fg = scheme.base0A, gui = "bold" },
+        removed  = { bg = "None", fg = scheme.base0D, gui = "bold" },
     },
     symbols        =
     {
@@ -140,8 +139,8 @@ local buffers =
     mode = 1,
     tabs_color =
     {
-        active   = { bg = "None", fg = colors.foreground, gui = "bold" },
-        inactive = { bg = "None", fg = colors.comment },
+        active   = { bg = "None", fg = scheme.base05, gui = "bold" },
+        inactive = { bg = "None", fg = scheme.base03 },
     },
     symbols =
     {
