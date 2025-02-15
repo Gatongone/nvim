@@ -10,18 +10,18 @@ local ignore_bufs =
     "terminal"
 }
 
-vim.t.f_winid = -1
-vim.t.v_winid  = -1
-vim.t.h_winid  = -1
+vim.t.f_termid = -1
+vim.t.v_termid  = -1
+vim.t.h_termid  = -1
 
 --- Open Ternimal as float window
 local function open_terminal()
-    if vim.t.f_winid >= 0 and vim.api.nvim_win_is_valid(vim.t.f_winid) then
-        vim.api.nvim_set_current_win(vim.t.f_winid)
+    if vim.t.f_termid >= 0 and vim.api.nvim_win_is_valid(vim.t.f_termid) then
+        vim.api.nvim_set_current_win(vim.t.f_termid)
         return
     end
 
-    vim.t.f_winid = win.create_win(true, { title = "Terminal" }).winnr
+    vim.t.f_termid = win.create_win(true, { title = "Terminal" }).winnr
 
     -- Open explore
     vim.cmd("terminal")
@@ -30,14 +30,14 @@ end
 
 --- Open Ternimal as horizontally window
 local function open_terminal_horizontally()
-    if vim.t.h_winid >= 0 and vim.api.nvim_win_is_valid(vim.t.h_winid) then
-        vim.api.nvim_set_current_win(vim.t.h_winid)
+    if vim.t.h_termid >= 0 and vim.api.nvim_win_is_valid(vim.t.h_termid) then
+        vim.api.nvim_set_current_win(vim.t.h_termid)
         return
     end
 
     -- Create window
     vim.cmd("split")
-    vim.t.h_winid = vim.api.nvim_get_current_win()
+    vim.t.h_termid = vim.api.nvim_get_current_win()
     vim.cmd("resize "..nvim.ext.ui.get_screen_row(0.3))
     vim.cmd("terminal")
     vim.cmd("startinsert")
@@ -46,12 +46,12 @@ end
 
 --- Open Ternimal as vertically window
 local function open_terminal_vertically()
-    if vim.t.v_winid >= 0 and vim.api.nvim_win_is_valid(vim.t.v_winid) then
-        vim.api.nvim_set_current_win(vim.t.v_winid)
+    if vim.t.v_termid >= 0 and vim.api.nvim_win_is_valid(vim.t.v_termid) then
+        vim.api.nvim_set_current_win(vim.t.v_termid)
         return
     end
     vim.cmd("vsplit")
-    vim.t.v_winid = vim.api.nvim_get_current_win()
+    vim.t.v_termid = vim.api.nvim_get_current_win()
     vim.cmd("vertical resize "..nvim.ext.ui.get_screen_col(0.35))
     vim.cmd("terminal")
     vim.cmd("startinsert")
@@ -94,7 +94,10 @@ local function terminal_enter_with_insert()
     if vim.bo.buftype ~= "terminal" then
         return
     end
-    vim.cmd("startinsert")
+    local cur_win = vim.api.nvim_get_current_win()
+    if cur_win == vim.t.f_termid or cur_win == vim.t.v_termid or cur_win == vim.t.h_termid then
+        vim.cmd("startinsert")
+    end
 end
 
 vim.opt.splitright = true

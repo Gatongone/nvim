@@ -8,9 +8,9 @@ elseif explore == "ranger" and vim.fn.executable("ranger") then
 end
 
 if not succeed or explore == 'netrw' then
-    vim.notify("Setup '"..explore.."' explore failed, fallback to netrw.")
     require("comp.netrw")
 end
 
 require("comp.terminal")
 require("comp.jmpword")
+require("comp.runner")

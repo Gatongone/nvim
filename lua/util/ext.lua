@@ -185,11 +185,11 @@ nvim.ext =
 }
 
 --- Check if element contains in table
---- @param self table
+--- @param str table
 --- @param element any
 --- @return boolean contains
-table.contains = function(self, element)
-    for _, value in pairs(self) do
+table.contains = function(str, element)
+    for _, value in pairs(str) do
         if element == value then
             return true
         end
@@ -198,12 +198,21 @@ table.contains = function(self, element)
 end
 
 --- Convert string to array
---- @param self string
+--- @param str string
 --- @return table array
-string.toarray = function(self)
+string.toarray = function(str)
     local result = {}
-    for i = 1, #self do
-        result[i] = string.sub(self, i, i)
+    for i = 1, #str do
+        result[i] = string.sub(str, i, i)
     end
     return result
+end
+
+--- Replace string with pattern
+--- @param str string
+--- @return string result
+string.replace = function(str, patterns)
+    return (str:gsub("%$([%a_][%w_]*)", function(key)
+        return patterns[key] or ("$"..key)
+    end))
 end
