@@ -53,7 +53,7 @@ return
             local handlers =
             {
                 function(server)
-                    lsp[server].setup(configs[server])
+                    lsp[server].setup(configs[server] or {})
                 end
             }
             require("mason").setup(
