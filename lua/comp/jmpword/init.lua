@@ -1,5 +1,5 @@
 local label_chars = string.toarray("abcdefghijklmnobqrstuvwxyz")
-local ns_id = vim.api.nvim_create_namespace('AceJump')
+local ns_id = vim.api.nvim_create_namespace('JumpWord')
 local hl_group =
 {
     unmatch = "Comment",

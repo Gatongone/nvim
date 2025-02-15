@@ -12,4 +12,4 @@ if not succeed or tree == 'netrw' then
 end
 
 require("comp.terminal")
-require("comp.jumpword")
+require("comp.jmpword")
