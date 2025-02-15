@@ -29,11 +29,10 @@ local function run_code()
     end
     local cmd = get_command()
     if not cmd then return end
-    print(cmd)
 
     vim.t.f_runid = win.create_win(true, { title = "Runner" }).winnr
     vim.fn.termopen(cmd, { on_exit = function() vim.t.f_runid = -1 end })
-    bnmap("<C-q>", ":q!<CR>")
+    bnmap("q", ":q!<CR>")
 end
 
 --- Run file in a split horizontally window
