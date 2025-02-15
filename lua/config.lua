@@ -77,10 +77,10 @@ nvim.keymap =
         open_terminal_horizontal = 'th',          -- Open the terminal in a horizontally splited window.
         open_terminal_vertical   = 'tv',          -- Open the terminal in a vertically splited window.
     },
-    tree =                                        -- When using external file tree utilities (e.g. yazi, ranger, etc.), it will only take effect, when their respective configuration files are missing.
+    explore =                                     -- When using explore utilities (e.g. yazi, ranger, etc.), it will only take effect, when their respective configuration files are missing.
     {
-        open_tree                = '<A-f>',       -- Open file tree.
-        close_tree               = '<A-f>',       -- Close file tree.
+        open_explore             = '<A-f>',       -- Open explore.
+        close_explore            = '<A-f>',       -- Close explore.
 
         move_to_prev_item        = 'i',           -- Select previous item.
         move_to_next_item        = 'k',           -- Select next item.
@@ -127,7 +127,7 @@ nvim.setting =
 {
     editor =
     {
-        tree = 'netrw',                           -- File tree implemention, advanced 'netrw' for default. 'yazi', 'ranger' are builtin supported.
+        explore = 'netrw',                        -- Explore implemention, advanced 'netrw' for default. 'yazi', 'ranger' are builtin supported.
     },
     file =
     {

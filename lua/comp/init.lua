@@ -1,13 +1,14 @@
--- File tree implementation
-local tree    = nvim.setting.editor.tree
+-- File explore implementation
+local explore = nvim.setting.editor.explore
 local succeed = false
-if tree == "yazi" and vim.fn.executable("yazi") then
+if explore == "yazi" and vim.fn.executable("yazi") then
     succeed = pcall(require, "comp.yazi")
-elseif tree == "ranger" and vim.fn.executable("ranger") then
+elseif explore == "ranger" and vim.fn.executable("ranger") then
     succeed = pcall(require, "comp.ranger")
 end
 
-if not succeed or tree == 'netrw' then
+if not succeed or explore == 'netrw' then
+    vim.notify("Setup '"..explore.."' explore failed, fallback to netrw.")
     require("comp.netrw")
 end
 

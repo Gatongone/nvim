@@ -1,4 +1,3 @@
-local tree = nvim.setting.editor.tree
 local map  = vim.keymap.set
 local opt  = {noremap = true, silent = true }
 bnmap = function(before, after)

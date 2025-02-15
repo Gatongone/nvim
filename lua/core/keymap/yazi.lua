@@ -1,7 +1,7 @@
-local tree = nvim.keymap.tree
+local ex = nvim.keymap.explore
 local editor = nvim.keymap.editor
 
-nmap(tree.open_tree, ":Yazi<CR>")
+nmap(ex.open_explore, ":Yazi<CR>")
 
 -- Convert nvim key to yazi key style
 local function to_toml_key(key)
@@ -54,19 +54,19 @@ keymap = [
     { on = "f",                run = "filter --smart",                desc = "Filter files" },
 ]
 ]],
-to_toml_key(tree.open),
-to_toml_key(tree.open),
+to_toml_key(ex.open),
+to_toml_key(ex.open),
 to_toml_key(editor.normal_mode),
-to_toml_key(tree.close_tree),
-to_toml_key(tree.move_to_prev_item),
-to_toml_key(tree.move_to_next_item),
-to_toml_key(tree.move_to_parent_folder),
-to_toml_key(tree.copy),
-to_toml_key(tree.cut),
-to_toml_key(tree.paste),
-to_toml_key(tree.create_file),
-to_toml_key(tree.rename),
-to_toml_key(tree.delete),
-to_toml_key(tree.mark_or_unmark))
+to_toml_key(ex.close_explore),
+to_toml_key(ex.move_to_prev_item),
+to_toml_key(ex.move_to_next_item),
+to_toml_key(ex.move_to_parent_folder),
+to_toml_key(ex.copy),
+to_toml_key(ex.cut),
+to_toml_key(ex.paste),
+to_toml_key(ex.create_file),
+to_toml_key(ex.rename),
+to_toml_key(ex.delete),
+to_toml_key(ex.mark_or_unmark))
 
 return custom_keymaps

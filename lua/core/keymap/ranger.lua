@@ -1,7 +1,7 @@
-local tree = nvim.keymap.tree
+local ex = nvim.keymap.explore.
 local editor = nvim.keymap.editor
 
-nmap(tree.open_tree, ":Ranger<CR>")
+nmap(ex.open_explore, ":Ranger<CR>")
 
 -- Convert nvim key to ranger key style
 local function to_conf_key(key)
@@ -36,19 +36,19 @@ map %s         console rename#space
 map %s         console delete 
 map %s         tag_toggle
 ]],
-to_conf_key(tree.move_to_prev_item),
-to_conf_key(tree.move_to_next_item),
-to_conf_key(tree.move_to_parent_folder),
-to_conf_key(tree.open),
-to_conf_key(tree.close_tree),
+to_conf_key(ex.move_to_prev_item),
+to_conf_key(ex.move_to_next_item),
+to_conf_key(ex.move_to_parent_folder),
+to_conf_key(ex.open),
+to_conf_key(ex.close_explore),
 to_conf_key(editor.normal_mode),
-to_conf_key(tree.copy),
-to_conf_key(tree.cut),
-to_conf_key(tree.paste),
-to_conf_key(tree.create_file),
-to_conf_key(tree.create_directory),
-to_conf_key(tree.rename),
-to_conf_key(tree.delete),
-to_conf_key(tree.mark_or_unmark))
+to_conf_key(ex.copy),
+to_conf_key(ex.cut),
+to_conf_key(ex.paste),
+to_conf_key(ex.create_file),
+to_conf_key(ex.create_directory),
+to_conf_key(ex.rename),
+to_conf_key(ex.delete),
+to_conf_key(ex.mark_or_unmark))
 
 return custom_keymaps:gsub([[#space]], [[%%space]])
