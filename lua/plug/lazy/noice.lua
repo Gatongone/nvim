@@ -1,4 +1,4 @@
-local colors = require("theme.scheme." .. nvim.setting.appearance.theme).color
+local colors = require("theme.scheme." .. nvim.setting.appearance.theme)
 
 local lsp_opts =
 {
@@ -44,7 +44,7 @@ return
     event = "VeryLazy",
     config = function()
         require('noice').setup(lsp_opts)
-        require('notify').setup({ background_colour = colors.background })
+        require('notify').setup({ background_colour = colors.base01 })
     end,
     dependencies =
     {
