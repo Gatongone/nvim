@@ -25,7 +25,8 @@ commands.install.key        = "O"
 commands.install.key_plugin = "o"
 
 -- Reset window style
-vim.api.nvim_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd("FileType",
+{
     pattern = "lazy",
     callback = function()
         local win          = vim.api.nvim_get_current_win()
