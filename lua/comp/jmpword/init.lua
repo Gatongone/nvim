@@ -84,7 +84,7 @@ end
 
 --- Handle user input
 --- @param char string User inputed character
---- @param included_chars table Label characters
+--- @param included_chars table Valid label characters
 --- @return boolean succeed false stands for exiting loop or jumped to target position
 function cache.try_process_char(char, included_chars)
     -- Handle escape characters
@@ -97,8 +97,10 @@ function cache.try_process_char(char, included_chars)
         return true
     end
 
+    local is_label = table.contains(included_chars, char)
+
     -- Check if character can be label
-    if table.contains(included_chars, char) then
+    if is_label then
         cache.label_buffer = cache.label_buffer .. char
     else
         cache.label_buffer = ''
@@ -112,12 +114,14 @@ function cache.try_process_char(char, included_chars)
         local target = cache.find_label_match(cache.label_buffer)
         if target then
             cache.jump_to_position(target)
-            return false
         end
+        return false
     end
 
     -- Keep listening
-    cache.pattern = cache.pattern .. char
+    if not is_label then
+        cache.pattern = cache.pattern .. char
+    end
     return true
 end
 
