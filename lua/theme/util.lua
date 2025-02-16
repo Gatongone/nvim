@@ -114,13 +114,6 @@ function util.highlight(group, color)
             end
         end
         vim.api.nvim_set_hl(0, group, data)
-        -- vim.cmd(hl)
-    end
-end
-
-function util.highlight_term(colors)
-    for k, v in ipairs(colors) do
-        vim.g['terminal_color_' .. (k - 1)] = v
     end
 end
 

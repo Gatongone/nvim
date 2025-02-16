@@ -578,9 +578,6 @@ function M.setup(theme, opts)
     vim.o.termguicolors = true
     -- Load base theme
     util.syntax(style.base)
-    -- Load term theme
-    util.highlight_term(style.term)
-
     vim.defer_fn(function()
         util.syntax(style.defer)
     end, 100)
