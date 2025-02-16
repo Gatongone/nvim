@@ -10,9 +10,9 @@ local ignore_bufs =
     "terminal"
 }
 
-vim.t.f_termid  = -1
-vim.t.v_termid  = -1
-vim.t.h_termid  = -1
+vim.t.f_termid = -1
+vim.t.v_termid = -1
+vim.t.h_termid = -1
 
 --- Open Ternimal as float window
 local function open_terminal()
@@ -113,8 +113,8 @@ end
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
-vim.api.nvim_create_user_command("OpenTerminal",             open_terminal, { })
+vim.api.nvim_create_user_command("OpenTerminal",             open_terminal,              { })
 vim.api.nvim_create_user_command("OpenTerminalHorizontally", open_terminal_horizontally, { })
-vim.api.nvim_create_user_command("OpenTerminalVertically",   open_terminal_vertically, { })
-vim.api.nvim_create_autocmd("WinClosed",  { pattern = "*", callback = terminal_closed_on_last })
+vim.api.nvim_create_user_command("OpenTerminalVertically",   open_terminal_vertically,   { })
+vim.api.nvim_create_autocmd("WinClosed",  { pattern = "*", callback = terminal_closed_on_last    })
 vim.api.nvim_create_autocmd("WinEnter",   { pattern = "*", callback = terminal_enter_with_insert })
