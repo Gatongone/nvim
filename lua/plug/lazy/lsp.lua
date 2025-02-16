@@ -53,7 +53,7 @@ return
             local handlers =
             {
                 function(server)
-                    lsp[server].setup(configs[server] or {})
+                    lsp[server].setup(configs[server] or { on_attach = on_client_attach })
                 end
             }
             require("mason").setup(
