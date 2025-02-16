@@ -61,13 +61,14 @@ function cache.listen_input_pattern()
 
         -- Handle char, false stands for exiting loop or jumped to target position
         if not cache.try_process_char(char, included_chars) then
+            cache.cleanup()
             return
         end
 
         -- Match user pattern
         cache.positions = cache.find_matches(cache.pattern)
         if #cache.positions == 0 then
-            cache.handling_input = false
+            cache.clear_hightlight()
             cache.cleanup()
             return
         end
@@ -88,7 +89,6 @@ end
 function cache.try_process_char(char, included_chars)
     -- Handle escape characters
     if char == escape_chars.esc then
-        cache.cleanup()
         return false
     elseif char == escape_chars.bs_code then
         cache.clear_hightlight()
@@ -97,32 +97,27 @@ function cache.try_process_char(char, included_chars)
         return true
     end
 
+    -- Check if character can be label
+    if table.contains(included_chars, char) then
+        cache.label_buffer = cache.label_buffer .. char
+    else
+        cache.label_buffer = ''
+    end
+
     -- Label matching takes priority
-    cache.label_buffer = cache.label_buffer .. char
     local expected_len = #cache.positions > #included_chars and 2 or 1
+
+    -- Try to match labels
     if #cache.label_buffer >= expected_len then
         local target = cache.find_label_match(cache.label_buffer)
-
-        -- Label matched
-        if target and table.contains(included_chars, char) then
+        if target then
             cache.jump_to_position(target)
-            cache.cleanup()
             return false
-        -- Pattern matched
-        else
-            -- Merge buffer into pattern
-            cache.pattern = cache.pattern .. cache.label_buffer
-
-            --print(M.pattern)
-            cache.label_buffer = ''
-            return true
         end
     end
 
     -- Keep listening
     cache.pattern = cache.pattern .. char
-    cache.label_buffer = ''
-    cache.clear_hightlight()
     return true
 end
 
