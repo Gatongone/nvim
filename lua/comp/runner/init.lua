@@ -16,10 +16,10 @@ local function get_command()
     end
     return string.replace(lang.cmd,
         {
-            filename = vim.fn.expand('%'),
-            runfile  = vim.fn.expand('%<'),
-            delete   = "rm -rf"
-        })
+            file    = vim.fn.expand('%'),
+            exename = vim.fn.fnamemodify(vim.fn.expand('%'), ":t:r"),
+            delete  = nvim.env.cli_rmf,
+        }):gsub("/", nvim.env.dir_sp):gsub(";", nvim.env.cli_sp)
 end
 
 --- Run file in a float window
@@ -29,10 +29,11 @@ local function run_code()
     end
     local cmd = get_command()
     if not cmd then return end
+    print(cmd)
 
     vim.t.f_runid = win.create_win(true, { title = "Runner" }).winnr
     vim.fn.termopen(cmd, { on_exit = function() vim.t.f_runid = -1 end })
-    bnmap("q", ":q!<CR>")
+    bnmap("<C-q>", ":q!<CR>")
 end
 
 --- Run file in a split horizontally window
@@ -47,7 +48,7 @@ local function run_code_horizontally()
     vim.cmd("new")
     vim.fn.termopen(cmd, { on_exit = function() vim.t.h_runid = -1 end })
     vim.cmd("resize " .. nvim.ext.ui.get_screen_row(0.3))
-    bnmap("q", ":q!<CR>")
+    bnmap("<C-q>", ":q!<CR>")
     vim.t.h_runid = vim.api.nvim_get_current_win()
 end
 
@@ -63,7 +64,7 @@ local function run_code_vertically()
     vim.cmd("vertical new")
     vim.fn.termopen(cmd, { on_exit = function() vim.t.v_runid = -1 end })
     vim.cmd("vertical resize " .. nvim.ext.ui.get_screen_col(0.35))
-    bnmap("q", ":q!<CR>")
+    bnmap("<C-q>", ":q!<CR>")
     vim.t.v_runid = vim.api.nvim_get_current_win()
 end
 

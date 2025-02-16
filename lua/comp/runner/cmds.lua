@@ -1,18 +1,18 @@
 return
 {
-    c          = { cmd = "gcc '$filename' -o '$runfile' ./'$runfile' ; $delete '$runfile'" },
-    cpp        = { cmd = "g++ '$filename' -O2 -g -Wall -o '$runfile' ; ./'$runfile' ; $delete '$runfile'" },
-    cs         = { cmd = "dotnet script '$filename'" },
-    go         = { cmd = "go run '$filename'" },
-    java       = { cmd = "javac '$filename' ; java '$runfile' ; $delete '$runfile.class'" },
-    javascript = { cmd = "node --trace-warnings '$filename'" },
-    php        = { cmd = "php '$filename'" },
-    python     = { cmd = "python3 '$filename'" },
-    ruby       = { cmd = "ruby $filename" },
-    rust       = { cmd = "rustc '$filename' ; ./'$runfile' ; $delete '$runfile'" },
-    sh         = { cmd = "bash '$filename'" },
-    typescript = { cmd = "node --trace-warnings '$filename'" },
-    lua        = { cmd = "luajit '$filename'" },
-    markdown   = { cmd = "glow '$filename'" },
-    zig        = { cmd = "zig run '$filename'" }
+    c          = { cmd = [[ gcc "$file" -o "$exename.exe" ; ./"$exename.exe" ; $delete "$exename.exe" ]] },
+    cpp        = { cmd = [[ g++ "$file" -O2 -g -Wall -o "$exename.exe" ; ./"$exename.exe" ; $delete "$exename.exe" ]] },
+    cs         = { cmd = [[ dotnet script "$file" ]] },
+    go         = { cmd = [[ go run "$file" ]] },
+    java       = { cmd = [[ javac "$file" ; java "$exename" ; $delete "$exename.class" ]] },
+    javascript = { cmd = [[ node --trace-warnings "$file" ]] },
+    php        = { cmd = [[ php "$file" ]] },
+    python     = { cmd = [[ python3 "$file" ]] },
+    ruby       = { cmd = [[ ruby $file ]] },
+    rust       = { cmd = [[ rustc "$file" ; ./"$exename" ; $delete "$exename" ]] },
+    sh         = { cmd = [[ bash "$file" ]] },
+    typescript = { cmd = [[ node --trace-warnings "$file" ]] },
+    lua        = { cmd = [[ luajit "$file" ]] },
+    markdown   = { cmd = [[ glow "$file" ]] },
+    zig        = { cmd = [[ zig run "$file" ]] }
 }
