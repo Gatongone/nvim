@@ -10,7 +10,7 @@ local ignore_bufs =
     "terminal"
 }
 
-vim.t.f_termid = -1
+vim.t.f_termid  = -1
 vim.t.v_termid  = -1
 vim.t.h_termid  = -1
 
@@ -60,9 +60,19 @@ end
 
 --- Close terminal when it's last window
 local function terminal_closed_on_last()
+    if not vim.t.f_termid or vim.api.nvim_win_is_valid(vim.t.f_termid) and
+       not vim.t.h_termid or vim.api.nvim_win_is_valid(vim.t.h_termid) and
+       not vim.t.v_termid or vim.api.nvim_win_is_valid(vim.t.v_termid) then
+        return
+    end
+
     -- Close the terminal when it's the last window
     if nvim.ext.win.get_cur_wins_count() == 1 then
-        goto exit
+        if vim.bo.buftype == "terminal" then
+            goto exit
+        else
+            return
+        end
     end
 
     -- Ignore certain plugin windows
