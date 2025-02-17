@@ -22,5 +22,5 @@ return
             }
         })
     end,
-    settings = { Lua = {} }
+    settings = { Lua = {} },
 }

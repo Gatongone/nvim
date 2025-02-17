@@ -48,12 +48,17 @@ return
     {
         "williamboman/mason-lspconfig.nvim",
         config = function()
+            local caps     = require('cmp_nvim_lsp').default_capabilities()
             local confs    = require("mason-lspconfig")
             local lsp      = require("lspconfig")
             local handlers =
             {
                 function(server)
-                    lsp[server].setup(configs[server] or { on_attach = on_client_attach })
+                    local config = configs[server]
+                    if config and not config.capabilities then
+                        config.capabilities = caps
+                    end
+                    lsp[server].setup(config or { on_attach = on_client_attach, capabilities = caps })
                 end
             }
             require("mason").setup(
@@ -96,7 +101,7 @@ return
             local cmp = require('cmp')
             cmp.setup(
                 {
-                    snippet    =
+                    snippet =
                     {
                         expand = function(args) vim.fn["vsnip#anonymous"](args.body) end
                     },
@@ -110,8 +115,8 @@ return
                             { name = 'path' }
                         }
                     ),
-                    mapping    = cmp.mapping.preset.insert(lsp_keymap.setup_cmp(cmp)),
-                    window     =
+                    mapping = cmp.mapping.preset.insert(lsp_keymap.setup_cmp(cmp)),
+                    window  =
                     {
                         completion = cmp.config.window.bordered(),
                         documentation = cmp.config.window.bordered(),
