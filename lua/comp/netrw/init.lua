@@ -227,13 +227,13 @@ local netrw_paste_files = function()
 
     -- Copy files to current directory
     if #netrw.copied ~= 0 then
-        vim.fn.execute("silent !" .. vim.g.netrw_localcopycmd .. "  " .. vim.g.netrw_localcopydircmdopt .. " " .. copy_list .. " "  .. vim.b.netrw_curdir)
+        vim.fn.execute("silent !" .. nvim.env.cli_cpd .. " " .. copy_list .. " "  .. vim.b.netrw_curdir)
         unmark_all = true
     end
 
     -- Cut files to current directory
     if #netrw.cut ~= 0 then
-        vim.fn.execute("silent !" .. vim.g.netrw_localmovecmd .. " " .. cut_list .. " "  .. vim.b.netrw_curdir)
+        vim.fn.execute("silent !" .. nvim.env.cli_mv .. " " .. cut_list .. " "  .. vim.b.netrw_curdir)
         unmark_all = true
     end
 
@@ -258,14 +258,14 @@ end
 --- Create file
 local netrw_create_file = function()
     local name = vim.fn.input("Please enter name: ")
-    vim.fn.execute("silent !touch " .. vim.b.netrw_curdir .. "/" .. name)
+    vim.fn.execute("silent !" .. nvim.env.cli_nf .. " " .. vim.b.netrw_curdir .. "/" .. name)
     vim.fn.execute("redraw!")
 end
 
 --- Create directory
 local netrw_create_directory = function()
     local name = vim.fn.input("Please enter name: ")
-    vim.fn.execute("silent !" .. vim.g.netrw_localmkdir .. " "  .. vim.b.netrw_curdir .. "/" .. name)
+    vim.fn.execute("silent !" .. nvim.env.cli_nd .. " "  .. vim.b.netrw_curdir .. "/" .. name)
     vim.fn.execute("redraw!")
 end
 
@@ -288,7 +288,7 @@ local netrw_remove_recursively = function()
 
     local is_no = vim.fn.input(message)
     if is_no ~= 'n' and is_no ~= 'no' then
-        vim.fn.execute("silent !rm -rf " .. params)
+        vim.fn.execute("silent !" .. nvim.env.cli_rmd .. " " .. params)
         netrw:clear_marked_list()
     end
 end
@@ -395,6 +395,9 @@ end
 --- @param path_before string The path that is before enter directory
 --- @param path_after string The path that is after enter directory
 local netrw_on_enter_directory = function(path_before, path_after)
+    if vim.b.netrw_liststyle == 3 then
+        return
+    end
     if netrw.hl[path_before] ~= nil then
         for _, value in pairs(netrw.hl[path_before]) do
             if value.ishl == true then
