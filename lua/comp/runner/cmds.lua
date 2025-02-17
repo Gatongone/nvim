@@ -2,7 +2,7 @@ return
 {
     c          = { cmd = [[ gcc "$file" -o "$exename.exe" ; ./"$exename.exe" ; $delete "$exename.exe" ]] },
     cpp        = { cmd = [[ g++ "$file" -O2 -g -Wall -o "$exename.exe" ; ./"$exename.exe" ; $delete "$exename.exe" ]] },
-    cs         = { cmd = [[ dotnet script "$file" ]] },
+    cs         = { cmd = [[ dotnet run || dotnet script "$file" ]] },
     go         = { cmd = [[ go run "$file" ]] },
     java       = { cmd = [[ javac "$file" ; java "$exename" ; $delete "$exename.class" ]] },
     javascript = { cmd = [[ node --trace-warnings "$file" ]] },
