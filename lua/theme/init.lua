@@ -14,7 +14,7 @@ local default_config =
     term_highlights      = {},
     color_overrides      = {},
     telescope_theme      = false,
-    use_original_palette = false
+    use_original_palette = false,
 }
 
 local function get_gitdiff_scheme(scheme)
@@ -135,6 +135,41 @@ local function setup_scheme(theme_name, opts)
         EndOfBuffer                         = { fg = scheme.base02 },
         JumpWordLabel                       = { fg = scheme.base0B, style = "bold" },
         JumpWordMatch                       = { fg = scheme.base08 },
+
+        -- Dap
+        DapBreakpoint                       = { fg = scheme.base0E },
+        DapBreakpointRejected               = { fg = scheme.base0E },
+        DapBreakpointCondition              = { fg = scheme.base0D },
+        DapStopped                          = { fg = scheme.base0D },
+        DapStoppedLine                      = { bg = util.darken(scheme.base0D, 0.55) },
+        DapLogPoint                         = { fg = scheme.base08, },
+        DapUIType                           = { fg = scheme.base0A, style = "bold" },
+        DapUIVariable                       = { fg = scheme.base0F },
+        DapUIModifiedValue                  = { fg = scheme.base0F },
+        DapUIScope                          = { fg = scheme.base08, style = "bold" },
+        DapUIDecoration                     = { fg = scheme.base05 },
+        DapUIThread                         = { fg = scheme.base0A },
+        DapUIStoppedThread                  = { fg = scheme.base0D, style = "bold" },
+        DapUIFrameName                      = { fg = scheme.base0F, style = "bold" },
+        DapUISource                         = { fg = scheme.base0D },
+        DapUILineNumber                     = { fg = scheme.base0C },
+        DapUIFloatBorder                    = { fg = scheme.base05 },
+        DapUIWatchesHeader                  = { fg = scheme.base0C },
+        DapUIWatchesEmpty                   = { fg = scheme.base03 },
+        DapUIWatchesValue                   = { fg = scheme.base05 },
+        DapUIWatchesError                   = { fg = scheme.base0E },
+        DapUIWatchesFrame                   = { fg = scheme.base0C },
+        DapUIBreakpointsPath                = { fg = scheme.base0B, style = "bold"},
+        DapUIBreakpointsInfo                = { fg = scheme.base08 },
+        DapUIBreakpointsCurrentLine         = { fg = scheme.base09 },
+        DapUIStop                           = { fg = scheme.base0E },
+        DapUIPlayPause                      = { fg = scheme.base0D },
+        DapUIRestart                        = { fg = scheme.base0D },
+        DapUIStepOver                       = { fg = scheme.base08 },
+        DapUIStepInto                       = { fg = scheme.base08 },
+        DapUIStepBack                       = { fg = scheme.base08 },
+        DapUIStepOut                        = { fg = scheme.base08 },
+        DapUIUnavailable                    = { fg = scheme.base03, bg = none },
 
         -- Noice
         NoiceCmdlineIcon                    = { fg = scheme.base0B },
@@ -561,6 +596,13 @@ local function setup_scheme(theme_name, opts)
                 TelescopeSelection     = { bg = diff.change },
                 TelescopeNormal        = { bg = scheme.base00 },
             })
+    end
+
+    if style.transparent_bg then
+        theme.base = vim.tbl_extend("force", theme.base,
+        {
+            DapUIEndofBuffer = { bg = scheme.base01 },
+        })
     end
 
     theme.base = vim.tbl_extend("force", theme.base, style.highlights or {})

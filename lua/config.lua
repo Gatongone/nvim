@@ -119,6 +119,12 @@ nvim.keymap =
         cmp_confirm              = '<Tab>',       -- Confirm cmp item.
         cmp_doc_scroll_up        = '<C-i>',       -- Cmp document scroll up.
         cmp_doc_scroll_down      = '<C-k>',       -- Cmp document scroll down.
+
+        dap_continue             = '<Leader>`',   -- Continue.
+        dap_breakpoint           = '<Leader>d',   -- Toggle break point.
+        dap_stepover             = '<Leader>1',   -- Setp over.
+        dap_stepinto             = '<Leader>2',   -- Setp into.
+        dap_stepout              = '<Leader>3',   -- Setp out.
     }
 }
 

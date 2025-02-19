@@ -13,12 +13,12 @@ nmap(keymap.goto_ref,         ':Lspsaga finder<CR>')
 function M.setup_lsp(bmap)
     local opts = { noremap = true, silent = true }
     -- Actions
-    bmap('n', keymap.rename_buf, '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+    bmap('n', keymap.rename_buf,  '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     bmap('n', keymap.format_code, '<cmd>lua vim.lsp.buf.format()<CR>', opts)
 
     -- Goto
-    bmap('n', keymap.goto_definition, '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    bmap('n', keymap.goto_declaration, '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+    bmap('n', keymap.goto_definition,     '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    bmap('n', keymap.goto_declaration,    '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
     bmap('n', keymap.goto_implementation, '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
 end
 
@@ -34,6 +34,15 @@ function M.setup_cmp(cmp)
         [keymap.cmp_abort]           = cmp.mapping.abort(),
         [keymap.cmp_confirm]         = cmp.mapping.confirm({ select = true }),
     }
+end
+
+--- Setup dap mappings
+function M.setup_dap(dap)
+    nmap(keymap.dap_breakpoint,       function() dap.toggle_breakpoint() end)
+    nmap(keymap.dap_continue,         function() dap.continue() end)
+    nmap(keymap.dap_stepinto,         function() dap.step_into() end)
+    nmap(keymap.dap_stepover,         function() dap.step_over() end)
+    nmap(keymap.dap_stepout,          function() dap.step_out() end)
 end
 
 return M

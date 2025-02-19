@@ -78,15 +78,15 @@ return
     info          = "",
     hint          = "",
     view          = "󰮔",
+    stoped        = "",
   },
   debug =
   {
-    breakpoint    = "",
-    restart       = "",
-    stop          = "",
-    continue      = "",
-    stepinto      = "󰆹",
-    stepout       = "󰆸",
+    breakpoint    = "",
+    continue      = "",
+    rejected      = "",
+    info          = "󰞏",
+    stopped       = "",
   },
   spinner = { '⣶', '⣧', '⣏', '⡟', '⠿', '⢻', '⣹', '⣼' }
 }
