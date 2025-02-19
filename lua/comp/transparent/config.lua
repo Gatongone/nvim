@@ -11,7 +11,7 @@ local config =
         'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
         'SignColumn', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
         'EndOfBuffer', 'NormalFloat', 'NvimTreeNormal', 'FloatBorder', 'TabLineFill',
-        'TabLine', 'TabLineSel'
+        'TabLine', 'TabLineSel', 'WinBar', 'WinBarNC'
     },
     extra_groups = {},
     exclude_groups = {},

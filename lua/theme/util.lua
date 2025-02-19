@@ -58,7 +58,7 @@ function util.brighten(color, percentage)
     return hsluv.hsluv_to_hex(hsl)
 end
 
-function util.invertColor(color)
+function util.invert_color(color)
     if color ~= "NONE" then
         local hsl = hsluv.hex_to_hsluv(color)
         hsl[3] = 100 - hsl[3]
@@ -70,7 +70,7 @@ function util.invertColor(color)
     return color
 end
 
-function util.randomColor(color)
+function util.random_color(color)
     if color ~= "NONE" then
         local hsl = hsluv.hex_to_hsluv(color)
         hsl[1] = math.random(1, 360)
