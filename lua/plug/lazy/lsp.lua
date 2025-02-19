@@ -1,5 +1,5 @@
--- Lsp keymaps
 local lsp_keymap       = require("core.keymap.lsp")
+local icon             = require("theme.icon")
 local on_client_attach = function(_, bufnr)
     local bmap = function(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -10,7 +10,8 @@ end
 -- Collect servers and configs
 local langs            = require("plug.langs")
 local servers          = {}
-local configs          = {}
+local lsps             = {}
+local daps             = {}
 
 for lang, server in pairs(langs) do
     if server == nil then
@@ -18,10 +19,15 @@ for lang, server in pairs(langs) do
     end
     local status, config = pcall(require, "plug.langs." .. lang)
     if status then
-        configs[server]  = config
-        config.on_attach = on_client_attach
+        if config.dap then
+            daps[lang] = config.dap
+        end
+        if config.lsp then
+            config.lsp.on_attach = on_client_attach
+            lsps[server] = config.lsp
+        end
     else
-        configs[server] = { on_attach = on_client_attach }
+        lsps[server] = { on_attach = on_client_attach }
     end
     table.insert(servers, server)
     ::continue::
@@ -43,6 +49,47 @@ local function on_mason_ui_open()
 end
 vim.api.nvim_create_autocmd("FileType", { pattern = "mason", callback = on_mason_ui_open })
 
+local function debug()
+    require("dap").continue()
+end
+
+vim.api.nvim_create_user_command('Debug', debug, { } )
+
+-- Setup dap icon/hl
+local dap_breakpoint =
+{
+    breakpoint =
+    {
+        text   = icon.debug.breakpoint,
+        texthl = "DapBreakpoint",
+        numhl  = "DapBreakpoint",
+    },
+    condition =
+    {
+        text   = icon.debug.continue,
+        texthl = 'DapBreakpointCondition',
+        numhl  = 'DapBreakpointCondition',
+    },
+    rejected =
+    {
+        text   = icon.debug.rejected,
+        texthl = "DapBreakpointRejected",
+        numhl  = "DapBreakpointRejected",
+    },
+    logpoint =
+    {
+        text   = icon.debug.info,
+        texthl = 'DapLogPoint',
+        numhl  = 'DapLogPoint',
+    },
+    stopped   = {
+        text   = icon.debug.stopped,
+        texthl = 'DapStopped',
+        numhl  = 'DapStopped',
+        linehl = 'DapStoppedLine'
+    },
+}
+
 return
 {
     {
@@ -54,7 +101,7 @@ return
             local handlers =
             {
                 function(server)
-                    local config = configs[server]
+                    local config = lsps[server]
                     if config and not config.capabilities then
                         config.capabilities = caps
                     end
@@ -105,7 +152,7 @@ return
                     {
                         expand = function(args) vim.fn["vsnip#anonymous"](args.body) end
                     },
-                    sources    = cmp.config.sources(
+                    sources = cmp.config.sources(
                         {
                             { name = 'nvim_lsp' },
                             { name = 'vsnip' },
@@ -132,7 +179,44 @@ return
             'hrsh7th/cmp-vsnip',
             'hrsh7th/vim-vsnip',
             'rafamadriz/friendly-snippets',
-            'onsails/lspkind-nvim'
+            'onsails/lspkind-nvim',
         }
-    }
+    },
+    {
+        "mfussenegger/nvim-dap",
+        config = function()
+            local dap   = require("dap")
+            local dapui = require("dapui")
+            local mason = require("mason-nvim-dap")
+            vim.fn.sign_define('DapBreakpoint', dap_breakpoint.breakpoint)
+            vim.fn.sign_define('DapBreakpointCondition', dap_breakpoint.condition)
+            vim.fn.sign_define('DapBreakpointRejected', dap_breakpoint.rejected)
+            vim.fn.sign_define('DapLogPoint', dap_breakpoint.logpoint)
+            vim.fn.sign_define('DapStopped', dap_breakpoint.stopped)
+
+            mason.setup({ ensure_installed = { "cppdbg" } })
+            dapui.setup({})
+            dap.adapters.gdb =
+            {
+                type = "executable",
+                command = "gdb",
+                args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
+            }
+            for lang, dap_config in pairs(daps) do
+                dap.configurations[lang] = dap_config
+            end
+
+            lsp_keymap.setup_dap(dap)
+            dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open({}) end
+            dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close({}) dap.repl.close() end
+            dap.listeners.before.event_exited["dapui_config"]     = function() dapui.close({}) dap.repl.close() end
+        end,
+        dependencies =
+        {
+            "jay-babu/mason-nvim-dap.nvim",
+            "theHamsta/nvim-dap-virtual-text",
+            "nvim-neotest/nvim-nio",
+            "rcarriga/nvim-dap-ui",
+        }
+    },
 }
