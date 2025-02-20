@@ -45,8 +45,8 @@ nvim.keymap =
         undo                     = 'u',                -- Undo operation.
         redo                     = 'U',                -- Redo operation.
         save                     = '<C-s>',            -- Save file.
-        copy                     = 'y',                -- copy text with options.
-        cut                      = 'x',                -- cut text.
+        copy                     = 'y',                -- Copy text with options.
+        cut                      = 'x',                -- Cut text.
         paste                    = 'p',                -- Paste text to the right of cursor.
         record                   = 'h',                -- Recording.
         play                     = 'H',                -- Play records.
@@ -54,13 +54,12 @@ nvim.keymap =
         goto                     = 'gt',               -- Go to everywhere.
         comment                  = '<C-_>',            -- Commenting lines.
         search                   = '<Leader><Leader>', -- Search everything.
-        close                    = '<C-q>'             -- Close Tab or window.
+        close                    = '<C-q>'             -- Forced to close Tab or window.
     },
     tab =
     {
         prev_tab                 = '<A-q>',            -- Set the left tab as current.
         next_tab                 = '<A-e>',            -- Set the right tab as current.
-        close_tab                = '<C-q>',            -- Close current tab.
     },
     win =
     {
@@ -139,7 +138,7 @@ nvim.setting =
     },
     file =
     {
-        encoding   = 'utf-8',                          -- file default encoding.
+        encoding   = 'utf-8',                          -- File default encoding.
         tab_intent = false,                            -- 'True' for tab intent, and 'False' for whitespace intent.
         intent_num = 4,                                -- Intent number.
     },
