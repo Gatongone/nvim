@@ -87,7 +87,7 @@ nvim.ext =
         --- Get number of tabs
         --- @return number count Number of tabs
         get_tabs_count = function()
-            return vim.fn.bufnr('$')
+            return vim.fn.tabpagenr('$')
         end,
 
         --- Get  name by tab handle
@@ -127,9 +127,12 @@ nvim.ext =
     win =
     {
         --- Get number of windows where in specific tab
-        --- @param id number Tab id
-        --- @return number tabid Numbers of windows where in specific tab
+        --- @param id number|nil Tab id
+        --- @return number id Numbers of windows where in specific tab
         get_wins_count = function(id)
+            if not id then
+                id = 0
+            end
             return #vim.api.nvim_tabpage_list_wins(id)
         end,
 
