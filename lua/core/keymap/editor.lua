@@ -84,4 +84,4 @@ nmap(editor.comment,  function() vim.cmd.norm('gcc') end)
 vmap(editor.comment,  function() vim.cmd.norm('gc')  end)
 
 -- Close tab or window
-nmap(editor.close,  ":q!")
+nmap(editor.close,  ":q!<CR>")
