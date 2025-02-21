@@ -5,8 +5,8 @@ nvim.keymap =
     {
         leader                   = ' ',                -- Key for <Leader>.
 
-        intent_left              = '<',                -- Append a tab intent to the line beginning in virtual mode and normal mode.
-        intent_right             = '>',                -- Remove a tab intent to the line beginning in virtual mode and normal mode.
+        intent_left              = '<C-j>',            -- Append a tab intent to the line beginning in virtual mode and normal mode.
+        intent_right             = '<C-l>',            -- Remove a tab intent to the line beginning in virtual mode and normal mode.
 
         insert_mode              = '<esc>',            -- Enter insert mode.
 
@@ -67,10 +67,10 @@ nvim.keymap =
         focus_right_win          = '<A-l>',            -- Focus on the window on the right.
         focus_up_win             = '<A-i>',            -- Focus on the window above.
         focus_down_win           = '<A-k>',            -- Focus on the window below.
-        resize_vwin_bigger       = '<C-l>',            -- Make the window bigger vertically (Increase window width).
-        resize_vwin_smaller      = '<C-j>',            -- Make the window smaller vertically (Decrease window width).
-        resize_hwin_bigger       = '<C-i>',            -- Make the window bigger horizontally (Increase window height).
-        resize_hwin_smaller      = '<C-k>',            -- Make the window smaller horizontally (Decrease window height).
+        resize_vwin_bigger       = '<Leader>l',        -- Make the window bigger vertically (Increase window width).
+        resize_vwin_smaller      = '<Leader>j',        -- Make the window smaller vertically (Decrease window width).
+        resize_hwin_bigger       = '<Leader>i',        -- Make the window bigger horizontally (Increase window height).
+        resize_hwin_smaller      = '<Leader>k',        -- Make the window smaller horizontally (Decrease window height).
     },
     terminal =
     {
