@@ -53,7 +53,7 @@ local function debug()
     require("dap").continue()
 end
 
-vim.api.nvim_create_user_command('Debug', debug, { } )
+vim.api.nvim_create_user_command('Debug', debug, { })
 
 -- Setup dap icon/hl
 local dap_breakpoint =
@@ -82,7 +82,8 @@ local dap_breakpoint =
         texthl = 'DapLogPoint',
         numhl  = 'DapLogPoint',
     },
-    stopped   = {
+    stopped =
+    {
         text   = icon.debug.stopped,
         texthl = 'DapStopped',
         numhl  = 'DapStopped',
@@ -108,27 +109,35 @@ return
                     lsp[server].setup(config or { on_attach = on_client_attach, capabilities = caps })
                 end
             }
+            require 'nvim-treesitter.configs'.setup(
+            {
+                highlight =
+                {
+                    enable = true,
+                    additional_vim_regex_highlighting = false,
+                },
+            })
             require("mason").setup(
+            {
+                ui =
                 {
-                    ui =
+                    keymaps =
                     {
-                        keymaps =
-                        {
-                            install_package   = "o",
-                            uninstall_package = "d"
-                        }
+                        install_package   = "o",
+                        uninstall_package = "d"
                     }
-                })
+                }
+            })
             require("lspsaga").setup(
+            {
+                lightbulb = { enable = false },
+                finder =
                 {
-                    lightbulb = { enable = false },
-                    finder =
-                    {
-                        max_height = 0.6,
-                        keys =
-                        { toggle_or_open = '<CR>', split = 's' },
-                    }
-                })
+                    max_height = 0.6,
+                    keys =
+                    { toggle_or_open = '<CR>', split = 's' },
+                }
+            })
             confs.setup({ ensure_installed = servers })
             confs.setup_handlers(handlers)
             vim.diagnostic.config { float = { border = "rounded" } }
@@ -208,8 +217,14 @@ return
 
             lsp_keymap.setup_dap(dap)
             dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open({}) end
-            dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close({}) dap.repl.close() end
-            dap.listeners.before.event_exited["dapui_config"]     = function() dapui.close({}) dap.repl.close() end
+            dap.listeners.before.event_terminated["dapui_config"] = function()
+                dapui.close({})
+                dap.repl.close()
+            end
+            dap.listeners.before.event_exited["dapui_config"]     = function()
+                dapui.close({})
+                dap.repl.close()
+            end
         end,
         dependencies =
         {
