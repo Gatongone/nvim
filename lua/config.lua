@@ -53,7 +53,6 @@ nvim.keymap =
         goback                   = 'gb',               -- Go back to previous edited position.
         goto                     = 'gt',               -- Go to everywhere.
         comment                  = '<C-_>',            -- Commenting lines.
-        search                   = '<Leader><Leader>', -- Search everything.
         close                    = '<C-q>'             -- Forced to close Tab or window.
     },
     tab =
@@ -71,6 +70,13 @@ nvim.keymap =
         resize_vwin_smaller      = '<Leader>j',        -- Make the window smaller vertically (Decrease window width).
         resize_hwin_bigger       = '<Leader>i',        -- Make the window bigger horizontally (Increase window height).
         resize_hwin_smaller      = '<Leader>k',        -- Make the window smaller horizontally (Decrease window height).
+    },
+    finder =
+    {
+        open_finder              = '<Leader><Leader>', -- Find everything.
+        finder_move_up           = '<A-i>',            -- Finder cursor move up.
+        finder_move_down         = '<A-k>',            -- Finder cursor move down.
+        finder_enter             = '<A-l>',            -- Finder enter item.
     },
     terminal =
     {
@@ -122,7 +128,7 @@ nvim.keymap =
         cmp_doc_scroll_down      = '<C-k>',            -- Cmp document scroll down.
 
         dap_continue             = '<Leader>`',        -- Continue.
-        dap_breakpoint           = '<Leader>d',        -- Toggle break point.
+        dap_breakpoint           = '<Leader>d',        -- Toggle breakpoint.
         dap_stepover             = '<Leader>1',        -- Step over.
         dap_stepinto             = '<Leader>2',        -- Step into.
         dap_stepout              = '<Leader>3',        -- Step out.
@@ -134,13 +140,14 @@ nvim.setting =
 {
     editor =
     {
-        explore = 'netrw',                             -- Explore implementation, advanced 'netrw' for default. 'yazi', 'ranger' are builtin supported.
+        explore                  = 'netrw',            -- Explore implementation, advanced 'netrw' for default. 'yazi', 'ranger' are builtin supported.
+        finder                   = 'fzf',              -- Finder implementation, 'fzf', 'telescope' are builtin supported.
     },
     file =
     {
-        encoding   = 'utf-8',                          -- File default encoding.
-        tab_intent = false,                            -- 'True' for tab intent, and 'False' for whitespace intent.
-        intent_num = 4,                                -- Intent number.
+        encoding                 = 'utf-8',            -- File default encoding.
+        tab_intent               = false,              -- 'True' for tab intent, and 'False' for whitespace intent.
+        intent_num               = 4,                  -- Intent number.
     },
     appearance =
     {

@@ -14,6 +14,7 @@
 --- @field shell string Current shell
 --- @field os string Current operation system
 --- @field get_line_ending function Get current file line ending type
+--- @field get_proj_root function Get project root directory
 
 nvim.env = { }
 
@@ -75,4 +76,44 @@ nvim.env.get_line_ending = function()
     end
 
     return line_endings
+end
+nvim.env.get_proj_root = function()
+    -- Project folders
+    local workspace_folders = vim.lsp.buf.list_workspace_folders()
+    if workspace_folders and #workspace_folders > 0 then
+        return workspace_folders[1]
+    end
+
+    -- Lsp root dir
+    local clients
+    if vim.lsp.get_clients then
+        clients = vim.lsp.get_clients({ bufnr = 0 }) -- Neovim 0.10+
+    else
+        clients = vim.lsp.get_active_clients({ bufnr = 0 }) -- Old version
+    end
+    for _, client in ipairs(clients) do
+        if client.config and client.config.root_dir then
+            return client.config.root_dir
+        end
+    end
+
+    -- Git folder
+    local current_file = vim.api.nvim_buf_get_name(0)
+    if current_file == '' then
+        current_file = vim.fn.getcwd()
+    else
+        current_file = vim.fn.fnamemodify(current_file, ':p:h')
+    end
+
+    local git_dir = vim.fs.find('.git', {
+        path = current_file,
+        upward = true,
+        type = 'directory'
+    })[1]
+    if git_dir then
+        return vim.fn.fnamemodify(git_dir, ':h')
+    end
+
+    -- Current folder
+    return vim.fn.getcwd()
 end
