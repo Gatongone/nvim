@@ -1,3 +1,8 @@
+-- Default
+require("comp.terminal")
+require("comp.jmpword")
+require("comp.runner")
+
 -- File explore implementation
 local explore = nvim.setting.editor.explore
 local succeed = false
@@ -11,6 +16,8 @@ if not succeed or explore == 'netrw' then
     require("comp.netrw")
 end
 
-require("comp.terminal")
-require("comp.jmpword")
-require("comp.runner")
+-- Finder
+local finder = nvim.setting.editor.finder
+if vim.fn.executable("fzf") then
+    require("comp.fzf")
+end

@@ -14,7 +14,7 @@ vim.t.f_termid = -1
 vim.t.v_termid = -1
 vim.t.h_termid = -1
 
---- Open Ternimal as float window
+--- Open Terminal as float window
 local function open_terminal()
     if vim.t.f_termid >= 0 and vim.api.nvim_win_is_valid(vim.t.f_termid) then
         vim.api.nvim_set_current_win(vim.t.f_termid)
