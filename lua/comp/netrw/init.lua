@@ -269,6 +269,17 @@ local netrw_create_directory = function()
     vim.fn.execute("redraw!")
 end
 
+-- Rename directory
+local netrw_rename = function()
+    local curpath = get_curline_path()
+    local name = vim.fn.input("Please enter name: ")
+    local destpath = vim.fn.isdirectory(curpath) == 1
+    and vim.fn.fnamemodify(curpath, ":p:h:h")..nvim.env.dir_sp..name
+    or vim.fn.fnamemodify(curpath, ":p:h")..nvim.env.dir_sp..name
+    vim.fn.execute("silent !"..nvim.env.cli_mv.." "..curpath.." "..destpath)
+    vim.fn.execute("redraw!")
+end
+
 --- Remove recursively
 local netrw_remove_recursively = function()
     if vim.o.filetype ~= 'netrw' then
@@ -284,13 +295,13 @@ local netrw_remove_recursively = function()
     end
 
     local params = table.concat(marked_files, " ")
-    local message = "Are you sure remove these files ('n' or 'no' to refuse):\n" .. table.concat(marked_files, "\n")
-
-    local is_no = vim.fn.input(message)
-    if is_no ~= 'n' and is_no ~= 'no' then
-        vim.fn.execute("silent !" .. nvim.env.cli_rmd .. " " .. params)
-        netrw:clear_marked_list()
-    end
+    print("Try removing:\n"..table.concat(marked_files, "\n"))
+    vim.ui.select({"YES", "NO"}, { prompt = "Are you sure remove these files?" }, function(choice)
+        if choice == "YES" then
+            vim.fn.execute("silent !" .. nvim.env.cli_rmd .. " " .. params)
+            netrw:clear_marked_list()
+        end
+    end)
 end
 
 --- Open netrw, if it was opened, then focus on it
@@ -307,17 +318,6 @@ local netrw_open = function()
         vim.cmd("Lexplore")
         netrw:clear_marked_list()
         vim.t.netrw_winid = vim.api.nvim_get_current_win()
-    end
-end
-
---- Remove all netrw windows
-local remove_tabs_netrw = function()
-    for _, tabid in ipairs(vim.api.nvim_list_tabpages()) do
-        local contains_netrw, win_id = pcall(vim.api.nvim_tabpage_get_var, tabid, "netrw_winid")
-        if contains_netrw and win_id ~= nil then
-            vim.api.nvim_win_close(win_id, true)
-            vim.api.nvim_tabpage_set_var(tabid, "netrw_winid", nil)
-        end
     end
 end
 
@@ -346,13 +346,6 @@ local netrw_setup_ui = function()
 
 	local bufnr = vim.api.nvim_get_current_buf()
 	ui.setup(bufnr)
-end
-
---- Callback when netrw leave
-local netrw_on_leave = function()
-    if vim.o.filetype ~= 'netrw' then
-        return
-    end
 end
 
 --- Callback when netrw close
@@ -434,6 +427,13 @@ local netrw_open_file_or_directory = function()
         return
     end
 
+    local path = get_curline_path()
+    if vim.fn.isdirectory(path) ~= 1 then
+        netrw_open_file_in_new_tab(path)
+        vim.cmd('silent! lcd %:p:h')
+        return
+    end
+
     local before_dir = vim.b.netrw_curdir
     vim.cmd("normal \r")
     vim.cmd('silent! lcd %:p:h')
@@ -441,7 +441,7 @@ local netrw_open_file_or_directory = function()
         return
     end
     -- Enter directory and reset highligh
-    local after_dir  = vim.b.netrw_curdir
+    local after_dir = vim.b.netrw_curdir
     if vim.fn.isdirectory(after_dir) == 1 then
         netrw_on_enter_directory(before_dir, after_dir)
         return
@@ -475,13 +475,13 @@ vim.api.nvim_create_user_command("NetrwExitDirectory",        netrw_exit_directo
 vim.api.nvim_create_user_command("NetrwPasteFiles",           netrw_paste_files,            { })
 vim.api.nvim_create_user_command("NetrwCopyFile",             netrw_copy_file,              { })
 vim.api.nvim_create_user_command("NetrwCutFile",              netrw_cut_file,               { })
+vim.api.nvim_create_user_command("NetrwRename",               netrw_rename,                 { })
 vim.api.nvim_create_user_command("NetrwRemoveRecursively",    netrw_remove_recursively,     { })
 vim.api.nvim_create_user_command("NetrwCreateFile",           netrw_create_file,            { })
 vim.api.nvim_create_user_command("NetrwCreateDirectory",      netrw_create_directory,       { })
 vim.api.nvim_create_user_command("NetrwOpenFileTree",         netrw_open,                   { })
 vim.api.nvim_create_user_command("NetrwCloseFileTree",        netrw_close,                  { })
 vim.api.nvim_create_autocmd("WinClosed",      { pattern = "*", callback = netrw_on_close })
-vim.api.nvim_create_autocmd("WinLeave",       { pattern = "*", callback = netrw_on_leave })
 vim.api.nvim_create_autocmd("WinEnter",       { pattern = "*", callback = netrw_on_enter })
 vim.api.nvim_create_autocmd("BufModifiedSet", { pattern = "*", callback = netrw_setup_ui })
 
