@@ -1,4 +1,4 @@
-local ex = nvim.keymap.explore.
+local ex = nvim.keymap.explore
 local editor = nvim.keymap.editor
 
 nmap(ex.open_explore, ":Ranger<CR>")

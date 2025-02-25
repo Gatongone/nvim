@@ -22,7 +22,7 @@ local netrw_mapping = function()
     bnmap(explore.copy,                  ":NetrwCopyFile<CR>")
     bnmap(explore.paste,                 ":NetrwPasteFile<CR>")
     bnmap(explore.delete,                ":NetrwRemoveRecursive<CR>")
-    bnmap(explore.rename,                "R")
+    bnmap(explore.rename,                ":NetrwRename<CR>")
     bnmap(explore.create_file,           ":NetrwCreateFile<CR>")
     bnmap(explore.create_directory,      ":NetrwCreateDirectory<CR>")
 end
