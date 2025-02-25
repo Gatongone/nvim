@@ -2,9 +2,6 @@ return
 {
     'nvim-lua/plenary.nvim',
     config = function()
-        if nvim.setting.editor.finder ~= "telescope" then
-            return
-        end
         require('telescope').setup(
         {
             defaults =
