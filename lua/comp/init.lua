@@ -18,6 +18,6 @@ end
 
 -- Finder
 local finder = nvim.setting.editor.finder
-if vim.fn.executable("fzf") then
+if finder == "fzf" and vim.fn.executable("fzf") then
     require("comp.fzf")
 end

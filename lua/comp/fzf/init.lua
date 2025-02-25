@@ -46,7 +46,7 @@ style = style.." --color 'header-border:"..color.base0D..",header-label:"..util.
 local find_exclude = ""
 local fd_exclude = ""
 for _, dir in pairs(exclude_dirs) do
-    find_exclude = find_exclude.." -not -path '*/"..dir.."/*"
+    find_exclude = find_exclude.." -not -path '*/"..dir.."/*'"
     fd_exclude = fd_exclude.." -E "..dir
 end
 
@@ -79,7 +79,7 @@ local function open_fzf()
     wininfo = win.create_win(true, {title = "Finder"})
     local workspace = nvim.env.get_proj_root()
     if workspace then
-        if vim.fn.executable("fd") then
+        if vim.fn.executable("fd") == 1 then
             vim.fn.termopen("fd "..fd_exclude.. " . "..workspace.." | fzf "..previewer.."\\"..style..keymap, { on_exit = on_fzf_exit })
         else
             vim.fn.termopen("find "..workspace.." -type f \\( " ..find_exclude.. " \\) | fzf "..previewer..style..keymap, { on_exit = on_fzf_exit })
