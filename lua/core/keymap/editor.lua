@@ -69,6 +69,8 @@ nmap(editor.save,                       ':w<CR>')
 -- Select All
 nmap(editor.select_all,                 'ggvG$')
 vmap(editor.select_all,                 'vggvG$')
+nmap(editor.select_in,                  'vi')
+vmap(editor.select_in,                  'i')
 
 -- Copy/Cut/Paste
 nmap(editor.copy,                       'y')
@@ -84,4 +86,4 @@ nmap(editor.comment,  function() vim.cmd.norm('gcc') end)
 vmap(editor.comment,  function() vim.cmd.norm('gc')  end)
 
 -- Close tab or window
-nmap(editor.close,  ":q!<CR>")
+nmap(editor.close,                       ':q!<CR>')

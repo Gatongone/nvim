@@ -39,7 +39,8 @@ nvim.keymap =
         virtual_next_word_begin  = 'w',                -- Move cursor to next word beginning in normal mode.
         virtual_prev_word_begin  = 'W',                -- Move cursor to previous word beginning in normal mode.
 
-        select_all               = 'A',                -- Enter virtual mode and select all.
+        select_all               = 'sa',               -- Enter virtual mode and select all.
+        select_in                = 'si',               -- Enter virtual mode and select in target.
 
         delete                   = 'd',                -- Delete with option.
         undo                     = 'u',                -- Undo operation.
