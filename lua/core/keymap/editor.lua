@@ -67,8 +67,8 @@ nmap(editor.undo,                       'u')
 nmap(editor.save,                       ':w<CR>')
 
 -- Select All
-nmap(editor.select_all,                 'ggvG$')
-vmap(editor.select_all,                 'vggvG$')
+nmap(editor.select_all,                 'gg0vG$')
+vmap(editor.select_all,                 'vgg0vG$')
 nmap(editor.select_in,                  'vi')
 vmap(editor.select_in,                  'i')
 
