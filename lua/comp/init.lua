@@ -2,6 +2,7 @@
 require("comp.terminal")
 require("comp.jmpword")
 require("comp.runner")
+require("comp.autopairs")
 
 -- File explore implementation
 local explore = nvim.setting.editor.explore
