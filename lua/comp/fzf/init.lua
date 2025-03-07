@@ -52,9 +52,9 @@ end
 
 -- Set Previewer
 local previewer
-if vim.fn.executable("bat") then
+if vim.fn.executable("bat") == 1 then
     previewer = "--preview 'bat --color=always --style=numbers {}'"
-elseif vim.fn.executable("cat") then
+elseif vim.fn.executable("cat") == 1 then
     previewer = "--preview 'cat {}'"
 else
     previewer = "--preview 'fzf-preview.sh {}'"
