@@ -143,6 +143,7 @@ nvim.setting =
     {
         explore                  = 'netrw',            -- Explore implementation, advanced 'netrw' for default. 'yazi', 'ranger' are builtin supported.
         finder                   = 'fzf',              -- Finder implementation, 'fzf', 'telescope' are builtin supported.
+        git                      = 'lazygit',          -- Git TUI implementation, 'lazygit', 'gitui' are builtin supported.
     },
     file =
     {

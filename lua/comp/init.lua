@@ -22,3 +22,11 @@ local finder = nvim.setting.editor.finder
 if finder == "fzf" and vim.fn.executable("fzf") then
     require("comp.fzf")
 end
+
+-- Git
+local git = nvim.setting.editor.git
+if git == 'lazygit' and vim.fn.executable("lazygit") then
+    require("comp.lazygit")
+elseif  git == 'gitui' and vim.fn.executable("gitui") then
+    require("comp.lazygit")
+end
