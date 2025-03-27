@@ -45,7 +45,7 @@ local function open_kd()
             col      = 0
         })
         if string.find(selection, '%s') ~= nil then
-            vim.fn.termopen("kd -t" .. selection, { on_exit = on_kd_exit })
+            vim.fn.termopen("kd -t " .. selection, { on_exit = on_kd_exit })
         else
             vim.fn.termopen("kd " .. selection, { on_exit = on_kd_exit })
         end
