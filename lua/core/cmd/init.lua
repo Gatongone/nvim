@@ -1,1 +1,1 @@
-require("autocmd")
+require("core.cmd.autocmd")
