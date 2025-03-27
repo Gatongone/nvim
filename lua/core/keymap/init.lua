@@ -25,3 +25,4 @@ end
 require("core.keymap.editor")
 require("core.keymap.tab")
 require("core.keymap.win")
+require("core.keymap.translate")

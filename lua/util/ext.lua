@@ -156,7 +156,7 @@ nvim.ext =
             local win         = {}
             local focus       = enter == nil or enter == true
             local useropts = nvim.ext.win.get_win_config(opts)
-            win.title = opts.title
+            win.title = useropts.title
             win.bufnr = vim.api.nvim_create_buf(false, false)
             win.winnr = vim.api.nvim_open_win(win.bufnr, focus, useropts)
             return win
