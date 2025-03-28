@@ -31,6 +31,9 @@ local function on_kd_exit()
     tmap("l", 'l')
 end
 
+local function is_english(string)
+end
+
 --- Open kd as float window
 local function open_kd()
     local selection = get_visual_selection()
@@ -39,15 +42,16 @@ local function open_kd()
         {
             title    = "Translation",
             relative = "cursor",
-            width    = 120,
+            width    = 100,
             height   = 20,
             row      = 1,
             col      = 0
         })
-        if string.find(selection, '%s') ~= nil then
-            vim.fn.termopen("kd -t " .. selection, { on_exit = on_kd_exit })
+        string.gsub(selection, '"', '\"')
+        if selection:find('%s') ~= nil or selection:match("^[A-Za-z]+$") == nil then
+            vim.fn.termopen('kd -t "' .. selection .. '"', { on_exit = on_kd_exit })
         else
-            vim.fn.termopen("kd " .. selection, { on_exit = on_kd_exit })
+            vim.fn.termopen('kd "' .. selection .. '"', { on_exit = on_kd_exit })
         end
 
         vim.cmd("startinsert")

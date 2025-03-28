@@ -1,1 +1,1 @@
-vmap("ts", function() vim.cmd("Translate") end)
+vmap(nvim.keymap.editor.translate, function() vim.cmd("Translate") end)

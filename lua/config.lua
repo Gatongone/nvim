@@ -42,6 +42,8 @@ nvim.keymap =
         select_all               = 'sa',               -- Enter virtual mode and select all.
         select_in                = 'si',               -- Enter virtual mode and select in target.
 
+        translate                = 'ts',               -- Translate selected words or sentence.
+
         delete                   = 'd',                -- Delete with option.
         undo                     = 'u',                -- Undo operation.
         redo                     = 'U',                -- Redo operation.
